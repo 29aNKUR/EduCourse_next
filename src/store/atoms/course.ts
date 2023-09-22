@@ -8,10 +8,9 @@ export interface Course{
     price:number
 }
 
-export const courseState = atom<{isLoading: boolean, course : null | Course}>({
+export const courseState = atom<{ course : null | Course}>({
     key:'courseState',
     default: {
-        isLoading:true,
         course:null
     }
 })

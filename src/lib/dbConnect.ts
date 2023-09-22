@@ -2,9 +2,16 @@ import mongoose from "mongoose";
 let alreadyDone = false;
 
 export async function ensureDbConnected() {
-    if (alreadyDone) {
-        return;
+    try {
+        if (alreadyDone) {
+            return;
+        }
+        alreadyDone = true;
+        await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+        console.log("database connected");
     }
-    alreadyDone = true;
-    await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+    catch {
+        console.log("database not connected");
+    }
+   
 }
