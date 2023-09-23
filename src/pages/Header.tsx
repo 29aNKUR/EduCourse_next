@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import {  signIn, signOut } from "next-auth/react";
 
 const Header = ({session}) => {
   console.log(session);

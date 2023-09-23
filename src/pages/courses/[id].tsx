@@ -4,9 +4,7 @@ import { courseDescription, courseImage, coursePrice, courseTitle } from "@/stor
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-
-
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const Course= () => {
 
@@ -16,15 +14,10 @@ const Course= () => {
 
   const setCourse = useSetRecoilState(courseState);
 
-  const title = useRecoilValue(courseTitle);
-  const description = useRecoilValue(courseDescription);
-  const price = useRecoilValue(coursePrice);
-  const image = useRecoilValue(courseImage);
-
   const init = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/api/admin/${query.id}`);
-      setCourse({isLoading: false, course: response?.data?.course});
+      setCourse({course: response?.data?.course});
       console.log(response);
 
 
@@ -39,63 +32,139 @@ const Course= () => {
   },[]);
       
 
-  return (
-
-    <div>
-        <h1>{title}</h1>
-        <h2>{description}</h2>
-        <h2>{price}</h2>
-        <img src={image} alt="" />
-
-
+  return <div>
+        <GrayTopper />
+        <div>
+            <div>
+                <UpdateCard />
+            </div>
+            <div>
+                <CourseCard />
+            </div>
+        </div>
     </div>
-
-  )
 }
 
 export default Course;
 
+function GrayTopper() {
+    const title = useRecoilValue(courseTitle);
+    return <div style={{height: 250, background: "#212121", top: 0, width: "100vw", zIndex: 0, marginBottom: -250}}>
+        <div style={{ height: 250, display: "flex", justifyContent: "center", flexDirection: "column"}}>
+            <div>
+                <h1>
+                    {title}
+                </h1>
+            </div>
+        </div>
+    </div>
+}
 
+function UpdateCard() {
+    const [courseDetails, setCourse] = useRecoilState(courseState);
 
-// export const getStaticPaths = async () => {
-//   const response = await axios.get(`http://localhost:3000/api/admin/courses`);
+    const [title, setTitle] = useState(courseDetails.course.title);
+    const [description, setDescription] = useState(courseDetails.course.description);
+    const [image, setImage] = useState(courseDetails.course.imageLink);
+    const [price, setPrice] = useState(courseDetails.course.price);
 
-//   const paths = response?.data?.courses.map((course) => {
-//     return {
-//       params: { 
-//         id: course._id
-//       }  
-//     }
-//   })
-   
-//   return {
-//     paths,
-//     fallback: false
-//   }
-// }
+    return <div style={{display: "flex", justifyContent: "center"}}>
+    <div>
+        <div style={{padding: 20}}>
+            <h1 style={{marginBottom: 10}}>Update course details</h1>
+            <input
+                value={title}
+                style={{marginBottom: 10}}
+                onChange={(e) => {
+                    setTitle(e.target.value)
+                }}
+            />
 
+            <input
+                value={description}
+                style={{marginBottom: 10}}
+                onChange={(e) => {
+                    setDescription(e.target.value)
+                }}
 
-// export const getStaticProps = async () => {
-//   const { query } = useRouter();
-//   const response = await axios.get(`http://localhost:3000/api/admin/${query.id}`);
+            />
 
-//     return {
-//       props: { 
-//         data: response?.data?.course
-//       }  
-//     }
-//   }
-   
- 
+            <input
+                value={image}
+                style={{marginBottom: 10}}
+                onChange={(e) => {
+                    setImage(e.target.value)
+                }}
+            />
+            <input
+                value={price}
+                style={{marginBottom: 10}}
+                onChange={(e) => {
+                    setPrice(e.target.value)
+                }}
+            />
 
+            <button
+                onClick={async () => {
+                    axios.put(`${BASE_URL}/admin/courses/` + courseDetails.course._id, {
+                        title: title,
+                        description: description,
+                        imageLink: image,
+                        published: true,
+                        price
+                    }, {
+                        headers: {
+                            "Content-type": "application/json",
+                            "Authorization": "Bearer " + localStorage.getItem("token")
+                        }
+                    });
+                    let updatedCourse = {
+                        _id: courseDetails.course._id,
+                        title: title,
+                        description: description,
+                        imageLink: image,
+                        price
+                    };
+                    setCourse({course: updatedCourse, isLoading: false});
+                }}
+            > Update course</button>
+        </div>
+    </div>
+</div>
+}
 
-// const myCourse = ({data}) => {
-//   console.log(data);
-//   return (
-//     <div>
-//       <h1></h1>
-//     </div>
-//   )
-// }
+function CourseCard() {
+    const title = useRecoilValue(courseTitle);
+    const imageLink = useRecoilValue(courseImage);
 
-// export default myCourse;
+    return <div style={{display: "flex",  marginTop: 50, justifyContent: "center", width: "100%"}}>
+     <div style={{
+        margin: 10,
+        width: 350,
+        minHeight: 200,
+        borderRadius: 20,
+        marginRight: 50,
+        paddingBottom: 15,
+        zIndex: 2
+    }}>
+        <img src={imageLink} style={{width: 350}} ></img>
+        <div style={{marginLeft: 10}}>
+            <h1>{title}</h1>
+            <Price />
+        </div>
+    </div>
+    </div>
+}
+
+function Price() {
+
+    const price = useRecoilValue(coursePrice);
+    return <>
+        <h1 style={{color: "gray"}}>
+            Price
+        </h1>
+        <h1>
+            <b>Rs {price} </b>
+        </h1>
+    </>
+}
