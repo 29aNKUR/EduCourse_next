@@ -14,7 +14,6 @@ const Home = () => {
   // const userLoading = useRecoilValue(isUserLoading);
   return (
     <div>
-      <Header session={session}/>
       {session.data && <div><Courses/></div>}
       {!session.data && <div className="flex justify-between mt-40 ml-5">
           <div className="">

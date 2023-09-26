@@ -1,12 +1,15 @@
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import AddCourse from "./addcourse";
 import Link from "next/link";
 
-const Header = ({ session }) => {
-  // console.log(session);
+
+const Header = () => {
+
+  const {data:session} = useSession();
+    console.log(session,"header session"); 
   return (
     <div className="p-5 bg-slate-400 shadow-lg">
-      {!session?.data && (
+      {!session?.user?.email && (
         <div className="flex justify-between">
           <div className="text-2xl py-3 text-white font-bold">EduCourse</div>
           <div>
@@ -19,10 +22,10 @@ const Header = ({ session }) => {
           </div>
         </div>
       )}
-      {session?.data && (
+      {session?.user?.email && (
         <div className="flex justify-between">
           <div className="text-2xl py-3 text-white font-bold">
-            {session?.data?.user?.email}
+            {session?.user?.email}
           </div>
           <div>
             <Link href="/addcourse">

@@ -12,7 +12,6 @@ function Courses() {
     const response = await axios.get(
       "http://localhost:3000/api/admin/courses/"
     );
-    // console.log(response, "asdfasf");
     setCourses(response.data.courses);
   };
 
@@ -44,4 +43,5 @@ export function Course({ course }: { course: Course }) {
 
 export default Courses;
 
+//added for custom client session handling
 Courses.auth = true;
