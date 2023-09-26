@@ -3,7 +3,7 @@ import AddCourse from "./addcourse";
 import Link from "next/link";
 
 const Header = ({ session }) => {
-  console.log(session);
+  // console.log(session);
   return (
     <div className="p-5 bg-slate-400 shadow-lg">
       {!session?.data && (

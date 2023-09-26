@@ -1,51 +1,52 @@
 //Working
 import { courseState } from "@/store/atoms/course";
-import { courseDescription, courseImage, coursePrice, courseTitle } from "@/store/selectors/course";
+import {
+  courseDescription,
+  courseImage,
+  coursePrice,
+  courseTitle,
+} from "@/store/selectors/course";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-const Course= () => {
-
-  
-  const {query} = useRouter();
-  console.log(query, "Router");
+const Course = () => {
+  const { query } = useRouter();
+//   console.log(query, "Router");
 
   const setCourse = useSetRecoilState(courseState);
   const title = useRecoilValue(courseTitle);
 
   const init = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/admin/${query.id}`);
-      setCourse({course: response?.data?.course});
-      console.log(response);
-
-
+      const response = await axios.get(
+        `http://localhost:3000/api/admin/${query.id}`
+      );
+      setCourse({ course: response?.data?.course });
+    //   console.log(response);
+    } catch (e) {
+      console.log(e);
     }
-    catch (e) {
-      console.log(e)
-    }
-  }
+  };
 
   useEffect(() => {
-   init()
-  },[]);
-      
+    init();
+  }, []);
 
-  return <div>
-        {/* <GrayTopper /> */}
+  return (
+    <div>
+      {/* <GrayTopper /> */}
+      <div>
+        <div>{/* <UpdateCard /> */}</div>
         <div>
-            <div>
-                {/* <UpdateCard /> */}
-            </div>
-            <div>
-                {/* <CourseCard /> */}
-                {title}
-            </div>
+          {/* <CourseCard /> */}
+          {title}
         </div>
+      </div>
     </div>
-}
+  );
+};
 
 export default Course;
 

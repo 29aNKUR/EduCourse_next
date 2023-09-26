@@ -34,7 +34,7 @@ export const authOptions = {
                     const obj = { username: username, password: password };
                     const newAdmin = new Admin(obj);
                     let adminDb = await newAdmin.save();
-                    console.log(adminDb);
+                    // console.log(adminDb);
                     return {
                         id: adminDb._id,
                         email: adminDb.username,
