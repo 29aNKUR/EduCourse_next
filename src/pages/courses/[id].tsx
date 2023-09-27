@@ -13,18 +13,17 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const Course = () => {
   const { query } = useRouter();
-//   console.log(query, "Router");
+  console.log(query, "Router");
 
   const setCourse = useSetRecoilState(courseState);
-  const title = useRecoilValue(courseTitle);
 
   const init = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/admin/${query.id}`
+        `http://localhost:3000/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
-    //   console.log(response);
+      //   console.log(response);
     } catch (e) {
       console.log(e);
     }
@@ -35,14 +34,16 @@ const Course = () => {
   }, []);
 
   return (
-    <div>
-      {/* <GrayTopper /> */}
-      <div>
-        <div>{/* <UpdateCard /> */}</div>
-        <div>
-          {/* <CourseCard /> */}
-          {title}
+    <div className="">
+      <GrayTopper />
+      <div className="grid">
+      <div className="grid-cols-12 md:grid-cols-4 ml-9 md:ml-0 lg:grid-cols-3">
+          <CourseCard />
         </div>
+        <div className="grid-cols-12 md:grid-cols-8 mt-10 md:mt-0 lg:grid-cols-9">
+          <UpdateCard />
+        </div>
+     
       </div>
     </div>
   );
@@ -50,124 +51,143 @@ const Course = () => {
 
 export default Course;
 
-// function GrayTopper() {
-//     const title = useRecoilValue(courseTitle);
-//     return <div style={{height: 250, background: "#212121", top: 0, width: "100vw", zIndex: 0, marginBottom: -250}}>
-//         <div style={{ height: 250, display: "flex", justifyContent: "center", flexDirection: "column"}}>
-//             <div>
-//                 <h1>
-//                     {title}
-//                 </h1>
-//             </div>
-//         </div>
-//     </div>
-// }
+function GrayTopper() {
+  const title = useRecoilValue(courseTitle);
+  return (
+    <div className="h-60 bg-gray-900 top-0 min-w-full -mb-96">
+      <div className="h-60 flex justify-center flex-col">
+        <div>
+          <h1 className="text-white text-2xl flex justify-center -mt-20 font-bold">
+            {title}
+          </h1>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-// function UpdateCard() {
-//     const [courseDetails, setCourse] = useRecoilState(courseState);
+function UpdateCard() {
+  // const { query } = useRouter();
+  const [courseDetails, setCourse] = useRecoilState(courseState);
+  const [title, setTitle] = useState(courseDetails?.course?.title);
+  const [description, setDescription] = useState(
+    courseDetails?.course?.description
+  );
+  const [image, setImage] = useState(courseDetails?.course?.imageLink);
+  const [price, setPrice] = useState(courseDetails?.course?.price);
 
-//     const [title, setTitle] = useState(courseDetails?.course?.title);
-//     const [description, setDescription] = useState(courseDetails?.course?.description);
-//     const [image, setImage] = useState(courseDetails?.course?.imageLink);
-//     const [price, setPrice] = useState(courseDetails?.course?.price);
+  //For re-render the page to get correct course details in update card
+  useEffect(() => {
+    setTitle(courseDetails?.course?.title);
+    setDescription(courseDetails?.course?.description);
+    setImage(courseDetails?.course?.imageLink);
+    setPrice(courseDetails?.course?.price);
+  }, [courseDetails]);
 
-//     return <div style={{display: "flex", justifyContent: "center"}}>
-//     <div>
-//         <div style={{padding: 20}}>
-//             <h1 style={{marginBottom: 10}}>Update course details</h1>
-//             <input
-//                 value={title}
-//                 style={{marginBottom: 10}}
-//                 onChange={(e) => {
-//                     setTitle(e.target.value)
-//                 }}
-//             />
+  return (
+    <div>
+      <div className="flex flex-col md:w-96 md:ml-9 md:-mt-64 xl:ml-60 xl:-mt-72 bg-gray-800 rounded-lg">
+        <div className="h-4/6 shadow-2xl p-10">
+          <h1 className="text-xl font-bold text-white">
+            Update course details
+          </h1>
+          <div className="flex flex-col">
+            <input
+              className="border mt-9 p-2 rounded-lg"
+              value={title}
+              placeholder="Title"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
 
-//             <input
-//                 value={description}
-//                 style={{marginBottom: 10}}
-//                 onChange={(e) => {
-//                     setDescription(e.target.value)
-//                 }}
+            <input
+              className="border mt-9 p-2 rounded-lg"
+              value={description}
+              placeholder="Description"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
 
-//             />
+            <input
+              className="border mt-9 p-2 rounded-lg"
+              value={image}
+              placeholder="ImageLink"
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+            />
+            <input
+              className="border mt-9 p-2 rounded-lg"
+              value={price}
+              placeholder="Price"
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
+          </div>
 
-//             <input
-//                 value={image}
-//                 style={{marginBottom: 10}}
-//                 onChange={(e) => {
-//                     setImage(e.target.value)
-//                 }}
-//             />
-//             <input
-//                 value={price}
-//                 style={{marginBottom: 10}}
-//                 onChange={(e) => {
-//                     setPrice(e.target.value)
-//                 }}
-//             />
+          <button
+            className="p-3 rounded-lg border-2 border-white bg-gray-800 font-bold mt-5 text-white"
+            onClick={async () => {
+              axios.put(
+                `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
+                {
+                  title: title,
+                  description: description,
+                  imageLink: image,
+                  published: true,
+                  price: price,
+                }
+              );
+              let updatedCourse = {
+                _id: courseDetails?.course?._id,
+                title: title,
+                description: description,
+                imageLink: image,
+                price: price,
+              };
+              setCourse({ course: updatedCourse });
+              alert("course updated!");
+            }}
+          >
+            {" "}
+            Update course
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-//             <button
-//                 onClick={async () => {
-//                     axios.put(`${BASE_URL}/admin/courses/` + courseDetails.course._id, {
-//                         title: title,
-//                         description: description,
-//                         imageLink: image,
-//                         published: true,
-//                         price
-//                     }, {
-//                         headers: {
-//                             "Content-type": "application/json",
-//                             "Authorization": "Bearer " + localStorage.getItem("token")
-//                         }
-//                     });
-//                     let updatedCourse = {
-//                         _id: courseDetails.course._id,
-//                         title: title,
-//                         description: description,
-//                         imageLink: image,
-//                         price
-//                     };
-//                     setCourse({course: updatedCourse, isLoading: false});
-//                 }}
-//             > Update course</button>
-//         </div>
-//     </div>
-// </div>
-// }
+function CourseCard() {
+  const title = useRecoilValue(courseTitle);
+  const imageLink = useRecoilValue(courseImage);
 
-// function CourseCard() {
-//     const title = useRecoilValue(courseTitle);
-//     const imageLink = useRecoilValue(courseImage);
+  return (
+    <div className="">
+      <div className="mt-64 md:ml-auto md:mr-9 lg:mr-44 rounded-lg border bg-white w-72 shadow-lg">
+        <div className="">
+          <img src={imageLink} className="rounded-lg h-64"></img>
+        </div>
+        <div className="ml-10">
+          <h1 className="font-bold">{title}</h1>
+          <Price />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-//     return <div style={{display: "flex",  marginTop: 50, justifyContent: "center", width: "100%"}}>
-//      <div style={{
-//         margin: 10,
-//         width: 350,
-//         minHeight: 200,
-//         borderRadius: 20,
-//         marginRight: 50,
-//         paddingBottom: 15,
-//         zIndex: 2
-//     }}>
-//         <img src={imageLink} style={{width: 350}} ></img>
-//         <div style={{marginLeft: 10}}>
-//             <h1>{title}</h1>
-//             <Price />
-//         </div>
-//     </div>
-//     </div>
-// }
-
-// function Price() {
-
-//     const price = useRecoilValue(coursePrice);
-//     return <>
-//         <h1 style={{color: "gray"}}>
-//             Price
-//         </h1>
-//         <h1>
-//             <b>Rs {price} </b>
-//         </h1>
-//     </>
-// }
+function Price() {
+  const price = useRecoilValue(coursePrice);
+  return (
+    <>
+      <h1 style={{ color: "gray" }}>Price</h1>
+      <h1>
+        <b>Rs {price} </b>
+      </h1>
+    </>
+  );
+}

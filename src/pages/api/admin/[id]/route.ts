@@ -24,5 +24,9 @@ export default async (req: NextApiRequest,res: NextApiResponse) => {
       res.status(200).json({sucess: true , course});
     }
     res.status(404).json({success: false, messgae: "Course not found"});
+
+  }
+
+
+   
     
-}

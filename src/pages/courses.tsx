@@ -29,13 +29,26 @@ function Courses() {
 }
 
 export function Course({ course }: { course: Course }) {
+
+    const handleDelete = async () => {
+        const response = await axios.delete(`http://localhost:3000/api/admin/${course._id}/route`);
+        console.log(response);
+    }
+
+
   return (
     <div className="border shadow-lg p-5 w-60 m-5">
       <h1 className="font-bold text-lg">{course.title}</h1>
       <h2 className="font-semibold">{course.description}</h2>
       <img src={course.imageLink}></img>
-      <div>
-        <Link href={`/courses/${course._id}`}>Edit</Link>
+      <div className="flex justify-between mt-8">
+        {" "}
+        <div>
+          <Link href={`/courses/${course._id}`}>Edit</Link>
+        </div>
+        <div>
+          <button onClick={()=>handleDelete()}>Delete</button>
+        </div>
       </div>
     </div>
   );
