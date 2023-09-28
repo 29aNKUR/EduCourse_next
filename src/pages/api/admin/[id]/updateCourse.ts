@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 import { authOptions } from "../../auth/[...nextauth]";
 
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
   if (!session) {
@@ -35,7 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           res.status(404).json({ success: false, message: "Course not found" });
         }
       } else {
-          res.status(404).json({ success: false, message: "courseId not found"});
+        res.status(404).json({ success: false, message: "courseId not found" });
       }
     } catch (error) {
       console.error(error);

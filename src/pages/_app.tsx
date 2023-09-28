@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { SessionProvider, useSession } from "next-auth/react"
 import { RecoilRoot } from 'recoil'
 import Header from './header'
+import { ThemeProvider } from "next-themes";
 
 
 //component points to index.tsx
@@ -12,7 +13,7 @@ export default function App({
   {
   return ( 
   <RecoilRoot>
-
+    <ThemeProvider attribute='class'>
     <SessionProvider session={session}>
     <Header />
       {Component.auth ? (
@@ -22,7 +23,9 @@ export default function App({
       ) : (
         <Component {...pageProps} />
       )}
-  </SessionProvider></RecoilRoot> 
+  </SessionProvider>
+  </ThemeProvider>
+  </RecoilRoot> 
   ) 
 }
 

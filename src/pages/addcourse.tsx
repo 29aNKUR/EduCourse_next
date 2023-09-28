@@ -32,7 +32,7 @@ const addcourse = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="my-7 border-2 p-5 shadow-2xl md:-mt-28">
+      <div className="my-7 border-2 p-5 shadow-2xl">
         <div className="mb-3">
           {/* <label htmlFor="title" className="block mb-1">Course Title</label> */}
           <input
