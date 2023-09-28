@@ -13,42 +13,40 @@ const Testimonials  = () => {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+            EduCourse has been a <Mark>game-changer</Mark> for my career. The Digital Marketing Mastery course not only provided comprehensive knowledge but also practical skills that I could immediately apply in my job.
             </p>
 
             <Avatar
               image={userOneImg}
               name="Sarah Steiner"
-              title="VP Sales at Google"
+              title="Course - Digital Marketing Mastery"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
+            The course structure, hands-on projects, and the ability to connect with other learners in the <Mark>community</Mark> were invaluable. I now feel confident pursuing a career in this field.
+
             </p>
 
             <Avatar
               image={userTwoImg}
-              name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
+              name="David Martinez"
+              title="Course - Data Science Fundamentals"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I&apos;ve seen. I
-              would use this for anything.
+            As a complete beginner in web development, I wasn't sure where to start. EduCourse's Web Development Bootcamp provided a <Mark>structured</Mark> learning path and hands-on projects that helped me gain confidence quickly.
             </p>
 
             <Avatar
               image={userThreeImg}
-              name="Gabrielle Winn"
-              title="Co-founder of Acme Inc"
+              name="John Smith"
+              title="Course - Web Development Bootcamp"
             />
           </div>
         </div>

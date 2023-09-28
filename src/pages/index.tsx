@@ -1,6 +1,5 @@
 // import Home from './home'
 
-
 // const index = () => {
 //   return (
 //     <div>
@@ -41,36 +40,41 @@ const Home = () => {
       <Hero />
       <SectionTitle
         pretitle="EduCourse Benefits"
-        title=" Why should you choose us?">
-        Whether you're looking to enhance your career, explore new hobbies, or further your education, EduCourse offers a diverse range of high-quality courses that you can access anytime, anywhere. With user-friendly features, personalized recommendations, and a supportive learning community, EduCourse is designed to help you achieve your learning goals and unlock your full potential.
+        title=" Why should you choose us?"
+      >
+        Whether you're looking to enhance your career, explore new hobbies, or
+        further your education, EduCourse offers a diverse range of high-quality
+        courses that you can access anytime, anywhere. With user-friendly
+        features, personalized recommendations, and a supportive learning
+        community, EduCourse is designed to help you achieve your learning goals
+        and unlock your full potential.
       </SectionTitle>
       <Benefits data={benefitOne} />
       <Benefits imgPos="right" data={benefitTwo} />
-      <SectionTitle
+      {/* <SectionTitle
         pretitle="Watch a video"
-        title="Learn how to fullfil your needs">
+        title="Learn how to fullfil your needs"
+      >
         This section is to highlight a promo or demo video of your product.
         Analysts says a landing page with video has 3% more conversion rate. So,
         don&apos;t forget to add one. Just like this.
       </SectionTitle>
-      <Video />
+      <Video /> */}
       <SectionTitle
         pretitle="Testimonials"
-        title="Here's what our customers said">
-        Testimonails is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+        title="Here's what our Students have to say"
+      >
       </SectionTitle>
       <Testimonials />
       <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      This section answers frequently asked questions we receive about learning with EduCourse.
       </SectionTitle>
       <Faq />
-      <Cta />
+      {/* <Cta /> */}
       <Footer />
       <PopupWidget />
     </>
   );
-}
+};
 
 export default Home;

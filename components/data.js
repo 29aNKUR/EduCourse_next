@@ -2,9 +2,9 @@ import {
   AcademicCapIcon,
   UserGroupIcon,
   PencilSquareIcon,
-  DevicePhoneMobileIcon,
-  AdjustmentsHorizontalIcon,
-  SunIcon,
+  ClipboardDocumentCheckIcon,
+  ClockIcon,
+  ViewfinderCircleIcon
 } from "@heroicons/react/24/solid";
 
 import benefitOneImg from "../public/img/benefit-one.png";
@@ -34,24 +34,24 @@ const benefitOne = {
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
+  title: "More Features...",
+  desc: "Additional benefits that EduCourse offers to learners:",
   image: benefitTwoImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
-      icon: <DevicePhoneMobileIcon />,
+      title: "Certifications",
+      desc: "Showcase your skills with recognized certificates for your resume or portfolio.",
+      icon: <ClipboardDocumentCheckIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
-      icon: <AdjustmentsHorizontalIcon />,
+      title: "Lifetime Access",
+      desc: "Once you enroll in a course, you have lifetime access to the course materials and updates.",
+      icon: <ClockIcon />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
-      icon: <SunIcon />,
+      title: "Continuous Updates",
+      desc: "Courses are regularly updated to reflect the latest trends and developments in various industries, ensuring that your knowledge stays current and relevant.",
+      icon: <ViewfinderCircleIcon />,
     },
   ],
 };

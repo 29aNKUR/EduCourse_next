@@ -35,22 +35,22 @@ const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    question: "How do I get started?",
+    answer: "To get started, simply create an account on our platform. Once registered, you can browse our course catalog, select the courses that interest you, and enroll in them. You can start learning immediately.",
   },
   {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
+    question: " Are the courses on EduCourse self-paced?",
+    answer: "Yes, most of our courses are self-paced, allowing you to learn at your own speed and convenience. However, some courses may have set schedules or deadlines for assignments and assessments.",
   },
   {
-    question: "What is your refund policy? ",
+    question: "How long do I have access to a course after enrolling? ",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "You have lifetime access to the course materials after enrolling. You can revisit the content and resources whenever you like, even after you've completed the course.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Do I receive a certificate upon course completion?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "Yes, you will receive a certificate of completion for each course you successfully finish. Our certificates are recognized and can be added to your resume or LinkedIn profile to showcase your achievements. ",
   },
 ];
 
