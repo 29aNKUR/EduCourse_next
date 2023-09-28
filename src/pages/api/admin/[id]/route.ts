@@ -1,7 +1,3 @@
-// export const GET = async (req: Request) => {
-//     const id = req.url;
-//     console.log(id); 
-// }
 
 import { Course } from "@/lib/db";
 import { ensureDbConnected } from "@/lib/dbConnect"

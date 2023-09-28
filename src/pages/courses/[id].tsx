@@ -67,7 +67,7 @@ function GrayTopper() {
 }
 
 function UpdateCard() {
-  // const { query } = useRouter();
+  const router = useRouter();
   const [courseDetails, setCourse] = useRecoilState(courseState);
   const [title, setTitle] = useState(courseDetails?.course?.title);
   const [description, setDescription] = useState(
@@ -152,9 +152,25 @@ function UpdateCard() {
               alert("course updated!");
             }}
           >
-            {" "}
             Update course
           </button>
+
+
+          <button
+            className="p-3 rounded-lg border-2 border-white bg-gray-800 font-bold mt-5 text-white ml-9"
+            onClick={async () => {
+              axios.put(
+                `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
+               
+              );
+              alert("course deleted!");
+              router.push("/");
+            }}
+          >
+            Delete course
+          </button>
+
+
         </div>
       </div>
     </div>

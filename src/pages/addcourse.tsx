@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getSession, signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const addcourse = () => {
@@ -31,50 +31,55 @@ const addcourse = () => {
   };
 
   return (
-    <div className="flex-col justify-center m-60">
-      <div className="my-7">
-        <div className="my-2">
+    <div className="flex items-center justify-center h-screen">
+      <div className="my-7 border-2 p-5 shadow-2xl md:-mt-28">
+        <div className="mb-3">
+          {/* <label htmlFor="title" className="block mb-1">Course Title</label> */}
           <input
             type="text"
+            id="title"
             placeholder="Course Title"
-            className="border"
+            className="border rounded-lg p-2"
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-
-        <div className="my-2">
+        <div className="mb-3">
+          {/* <label htmlFor="description" className="block mb-1">Course Description</label> */}
           <input
             type="text"
+            id="description"
             placeholder="Course Description"
-            className="border"
+            className="border rounded-lg p-2"
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-
-        <div className="my-2">
+        <div className="mb-3">
+          {/* <label htmlFor="image" className="block mb-1">Course ImageLink</label> */}
           <input
             type="text"
+            id="image"
             placeholder="Course ImageLink"
-            className="border"
+            className="border rounded-lg p-2"
             onChange={(e) => setImage(e.target.value)}
           />
         </div>
-
-        <div className="my-2">
+        <div className="mb-3">
+          {/* <label htmlFor="price" className="block mb-1">Course Price</label> */}
           <input
-            type="Number"
+            type="number"
+            id="price"
             placeholder="Course Price"
-            className="border"
+            className="border rounded-lg p-2"
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
+        <button
+          onClick={() => handleAddCourse()}
+          className="px-5 py-3 border-gray-500 bg-blue-500 text-white rounded-lg"
+        >
+          Add Course
+        </button>
       </div>
-      <button
-        onClick={() => handleAddCourse()}
-        className="px-5 py-3 border-gray-500 bg-blue-500 text-white rounded-lg mr-5"
-      >
-        Add Course
-      </button>
     </div>
   );
 };

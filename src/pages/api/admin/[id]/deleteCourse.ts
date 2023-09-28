@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 import { authOptions } from "../../auth/[...nextauth]";
 
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
   if (!session) {
@@ -15,28 +14,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     await ensureDbConnected();
     try {
       const courseId = req.query.id;
-      const courseData = req.body;
-
-      if (courseId) {
-        // If courseId is provided, update the existing course
-        const updatedCourse = await Course.findByIdAndUpdate(
-          courseId,
-          courseData,
-          { new: true }
-        );
-
-        if (updatedCourse) {
-          res.status(200).json({
-            success: true,
-            message: "Course updated successfully",
-            course: updatedCourse,
-          });
-        } else {
-          res.status(404).json({ success: false, message: "Course not found" });
-        }
-      } else {
-          res.status(404).json({ success: false, message: "courseId not found"});
+      const course = await Course.findByIdAndDelete(courseId);
+      if(course) {
+        res.status(200).json({success: true,message: 'Course deleted successfully!'});
       }
+      else {
+        res.status(404).json({ success: false, message: "Course not found" });
+      }   
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
