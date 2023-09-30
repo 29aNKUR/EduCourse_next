@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/course/[id]/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/course/[id]/page.jsx", "components/benefits.js", "components/container.js", "components/DarkSwitch.js", "components/data.js", "components/faq.js", "components/footer.js", "components/hero.js", "components/navbar.js", "components/popupWidget.js", "components/sectionTitle.js", "components/testimonials.js"],
   "exclude": ["node_modules"]
 }

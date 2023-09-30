@@ -13,11 +13,9 @@
 
 import Head from "next/head";
 import Hero from "../../components/hero";
-import Navbar from "../../components/navbar";
 import SectionTitle from "../../components/sectionTitle";
 import { benefitOne, benefitTwo } from "../../components/data";
 import Benefits from "../../components/benefits";
-import Footer from "../../components/footer";
 import Testimonials from "../../components/testimonials";
 import Faq from "../../components/faq";
 // import PopupWidget from "../../components/popupWidget";
@@ -33,8 +31,6 @@ const Home = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Navbar />
       <Hero />
       <SectionTitle
         pretitle="EduCourse Benefits"
@@ -60,7 +56,6 @@ const Home = () => {
       This section answers frequently asked questions we receive about learning with EduCourse.
       </SectionTitle>
       <Faq />
-      <Footer />
       {/* <PopupWidget /> */}
     </>
   );

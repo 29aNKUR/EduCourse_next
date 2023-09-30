@@ -4,6 +4,8 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 import Header from "./header";
 import { ThemeProvider } from "next-themes";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 //component points to index.tsx
 export default function App({
@@ -15,6 +17,7 @@ export default function App({
       <ThemeProvider attribute="class">
         <SessionProvider session={session}>
           {/* <Header /> */}
+          <Navbar />
           {Component.auth ? (
             <Auth>
               <Component {...pageProps} />
@@ -22,6 +25,7 @@ export default function App({
           ) : (
             <Component {...pageProps} />
           )}
+          <Footer />
         </SessionProvider>
       </ThemeProvider>
     </RecoilRoot>
