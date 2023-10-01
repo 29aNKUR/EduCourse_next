@@ -66,7 +66,7 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700 dark:text-white">
-          Our Alumni work at some of the  <span className="text-indigo-600">best companies in the world</span>
+          Our Alumni works at some of the  <span className="text-indigo-600">best companies in the world</span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
