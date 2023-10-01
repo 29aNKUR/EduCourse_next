@@ -4,13 +4,13 @@ import React from "react";
 import Container from "./container";
 
 export default function Footer() {
-  const navigation = [
-    "Courses",
-    "Features",
-    "Pricing",
-    "Company",
-    "About",
-  ];
+  // const navigation = [
+  //   "Courses",
+  //   "Features",
+  //   "Pricing",
+  //   "Company",
+  //   "About",
+  // ];
   const legal = ["Terms", "Privacy", "Legal"];
   return (
     <div className="relative">
@@ -51,15 +51,15 @@ export default function Footer() {
             </div> */}
           </div>
 
-          <div>
-            <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {navigation.map((item, index) => (
-                <Link key={index} href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">                 
-                    {item}
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* <div> */}
+            {/* <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0"> */}
+              {/* {navigation.map((item, index) => ( */}
+                {/* <Link href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">                 
+                    Courses
+                </Link> */}
+              {/* ))} */}
+            {/* </div> */}
+          {/* </div> */}
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
               {legal.map((item, index) => (
