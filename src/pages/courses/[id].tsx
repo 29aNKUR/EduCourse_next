@@ -36,16 +36,16 @@ const Course = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <GrayTopper />
-        <div className="grid grid-cols-12">
-          <div className="col-span-12 md:col-span-4 lg:col-span-3">
-            <CourseCard />
-          </div>
-          <br />
-          <br />
-          <div className="">
-            <UpdateCard />
-          </div>
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 md:col-span-4 lg:col-span-3">
+          <CourseCard />
         </div>
+        <br />
+        <br />
+        <div className="">
+          <UpdateCard />
+        </div>
+      </div>
     </div>
   );
 };
@@ -86,91 +86,84 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div className="w-56 p-5">
-      <div className="flex items-center justify-center">
-        <div className="shadow-2xl p-10">
-          <h1 className="text-xl font-bold ">
-            Update course details
-          </h1>
-          <div className="flex flex-col">
-            <input
-              className="border mt-9 py-5 rounded-lg"
-              value={title}
-              placeholder="Title"
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
+    <div className="p-5 border">
+      <h1 className="text-xl font-bold mb-4">Update course details</h1>
+      <div className="flex flex-col">
+        <input
+          className="border rounded-lg p-5"
+          value={title}
+          placeholder="Title"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
 
-            <input
-              className="border mt-9 py-5 rounded-lg m-5"
-              value={description}
-              placeholder="Description"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            />
+        <input
+          className="border rounded-lg p-5"
+          value={description}
+          placeholder="Description"
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+        />
 
-            <input
-              className="border mt-9 py-5 rounded-lg"
-              value={image}
-              placeholder="ImageLink"
-              onChange={(e) => {
-                setImage(e.target.value);
-              }}
-            />
-            <input
-              className="border mt-9 py-2 rounded-lg"
-              value={price}
-              placeholder="Price"
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-            />
-          </div>
-            <div className="py-3 px-5 flex justify-between">
-            <button
-            className="border px-5 py-2 rounded-lg bg-indigo-600 text-white"
-            onClick={async () => {
-              axios.put(
-                `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
-                {
-                  title: title,
-                  description: description,
-                  imageLink: image,
-                  published: true,
-                  price: price,
-                }
-              );
-              let updatedCourse = {
-                _id: courseDetails?.course?._id,
+        <input
+          className="border rounded-lg p-5"
+          value={image}
+          placeholder="ImageLink"
+          onChange={(e) => {
+            setImage(e.target.value);
+          }}
+        />
+        <input
+          className="border rounded-lg p-5"
+          value={price}
+          placeholder="Price"
+          onChange={(e) => {
+            setPrice(e.target.value);
+          }}
+        />
+      </div>
+      <div className="flex justify-between mt-5">
+        <button
+          className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
+          onClick={async () => {
+            axios.put(
+              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              {
                 title: title,
                 description: description,
                 imageLink: image,
+                published: true,
                 price: price,
-              };
-              setCourse({ course: updatedCourse });
-              alert("course updated!");
-            }}
-          >
-            Update
-          </button>
+              }
+            );
+            let updatedCourse = {
+              _id: courseDetails?.course?._id,
+              title: title,
+              description: description,
+              imageLink: image,
+              price: price,
+            };
+            setCourse({ course: updatedCourse });
+            alert("course updated!");
+          }}
+        >
+          Update Course
+        </button>
 
-          <button
-            className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
-            onClick={async () => {
-              axios.put(
-                `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
-              );
-              alert("course deleted!");
-              router.push("/");
-            }}
-          >
-            Delete 
-          </button>
-            </div>
-       
-        </div>
+        <button
+          className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
+          onClick={async () => {
+            axios.put(
+              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
+            );
+            alert("course deleted!");
+            router.push("/");
+          }}
+        >
+          Delete Course
+        </button>
       </div>
     </div>
   );
@@ -216,7 +209,7 @@ function Price() {
     <>
       {/* <h1 style={{ color: "gray" }}>Price</h1> */}
       {/* <h1> */}
-        <b>{price} </b>
+      <b>{price} </b>
       {/* </h1> */}
     </>
   );
