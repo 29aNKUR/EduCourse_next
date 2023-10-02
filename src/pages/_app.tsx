@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider, useSession } from "next-auth/react";
 import { RecoilRoot } from "recoil";
-import Header from "./header";
 import { ThemeProvider } from "next-themes";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
