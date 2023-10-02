@@ -36,11 +36,13 @@ const Course = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <GrayTopper />
-      <div className="grid grid-cols-12 mt-10">
+      <div className="grid grid-cols-12">
         <div className="col-span-12 md:col-span-4 lg:col-span-3">
           <CourseCard />
         </div>
-        <div className="col-span-12 md:col-span-8 lg:col-span-9 mt-5 md:mt-0">
+        <br />
+        <br />
+        <div className="">
           <UpdateCard />
         </div>
       </div>
@@ -84,15 +86,15 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div>
-      <div className="flex items-center justify-center border">
-        <div className="h-4/6 shadow-2xl p-10">
-          <h1 className="text-xl font-bold text-white">
+    <div className="w-56">
+      <div className="flex items-center justify-center">
+        <div className="shadow-2xl p-10">
+          <h1 className="text-xl font-bold ">
             Update course details
           </h1>
           <div className="flex flex-col">
             <input
-              className="border mt-9 p-2 rounded-lg w-full my-32"
+              className="border mt-9 py-5 rounded-lg"
               value={title}
               placeholder="Title"
               onChange={(e) => {
@@ -101,7 +103,7 @@ function UpdateCard() {
             />
 
             <input
-              className="border mt-9 p-2 rounded-lg"
+              className="border mt-9 py-5 rounded-lg m-5"
               value={description}
               placeholder="Description"
               onChange={(e) => {
@@ -110,7 +112,7 @@ function UpdateCard() {
             />
 
             <input
-              className="border mt-9 p-2 rounded-lg"
+              className="border mt-9 py-5 rounded-lg"
               value={image}
               placeholder="ImageLink"
               onChange={(e) => {
@@ -118,7 +120,7 @@ function UpdateCard() {
               }}
             />
             <input
-              className="border mt-9 p-2 rounded-lg"
+              className="border mt-9 py-2 rounded-lg"
               value={price}
               placeholder="Price"
               onChange={(e) => {
@@ -126,9 +128,9 @@ function UpdateCard() {
               }}
             />
           </div>
-
-          <button
-            className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
+            <div className="py-3 px-5 flex justify-between">
+            <button
+            className="border px-5 py-2 rounded-lg bg-indigo-600 text-white"
             onClick={async () => {
               axios.put(
                 `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
@@ -151,7 +153,7 @@ function UpdateCard() {
               alert("course updated!");
             }}
           >
-            Update course
+            Update
           </button>
 
           <button
@@ -164,8 +166,10 @@ function UpdateCard() {
               router.push("/");
             }}
           >
-            Delete course
+            Delete 
           </button>
+            </div>
+       
         </div>
       </div>
     </div>
@@ -189,13 +193,14 @@ function CourseCard() {
     //   </div>
     // </div>
 
-    <div className="flex justify-end h-screen border shadow-lg p-5 w-3 lg:my-5 z-20">
+    <div className="flex justify-end h-screen border shadow-2xl p-5 w-3 lg:my-5 z-20">
       <div>
         <img className="p-8 rounded-lg" src={imageLink} alt="product image" />
         <div className="px-5 pb-5 dark:bg-red-500">
           <h5 className="text-lg font-bold tracking-wide">{title}</h5>
           <div className="flex items-center justify-between">
             <span className="text-lg font-bold">
+              <h1 className="text-gray-400"> Price </h1>
               ₹ <Price />
             </span>
           </div>
@@ -209,10 +214,10 @@ function Price() {
   const price = useRecoilValue(coursePrice);
   return (
     <>
-      <h1 style={{ color: "gray" }}>Price</h1>
-      <h1>
-        <b>Rs {price} </b>
-      </h1>
+      {/* <h1 style={{ color: "gray" }}>Price</h1> */}
+      {/* <h1> */}
+        <b>{price} </b>
+      {/* </h1> */}
     </>
   );
 }

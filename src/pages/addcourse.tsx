@@ -30,7 +30,7 @@ const addcourse = () => {
     }
   };
 
-  return (
+  return (  
     <div className="flex items-center justify-center h-screen">
       <div className="my-7 border-2 p-5 shadow-2xl">
         <div className="mb-3">
