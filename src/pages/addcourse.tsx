@@ -75,7 +75,7 @@ const addcourse = () => {
         </div>
         <button
           onClick={() => handleAddCourse()}
-          className="px-5 py-3 border-gray-500 bg-blue-500 text-white rounded-lg"
+          className="border px-7 py-2 rounded-lg bg-indigo-600 text-white"
         >
           Add Course
         </button>

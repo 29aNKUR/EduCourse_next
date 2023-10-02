@@ -36,16 +36,16 @@ const Course = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <GrayTopper />
-      <div className="grid grid-cols-12">
-        <div className="col-span-12 md:col-span-4 lg:col-span-3">
-          <CourseCard />
+        <div className="grid grid-cols-12">
+          <div className="col-span-12 md:col-span-4 lg:col-span-3">
+            <CourseCard />
+          </div>
+          <br />
+          <br />
+          <div className="">
+            <UpdateCard />
+          </div>
         </div>
-        <br />
-        <br />
-        <div className="">
-          <UpdateCard />
-        </div>
-      </div>
     </div>
   );
 };
@@ -58,7 +58,7 @@ function GrayTopper() {
     <div className="h-60 bg-gray-900 top-0 min-w-full -mb-96">
       <div className="h-60 flex justify-center flex-col">
         <div>
-          <h1 className="text-white text-2xl flex justify-center -mt-20 font-bold">
+          <h1 className="text-2xl flex justify-center -mt-20 font-bold">
             {title}
           </h1>
         </div>
@@ -86,7 +86,7 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div className="w-56">
+    <div className="w-56 p-5">
       <div className="flex items-center justify-center">
         <div className="shadow-2xl p-10">
           <h1 className="text-xl font-bold ">
