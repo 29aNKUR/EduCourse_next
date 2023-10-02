@@ -34,13 +34,13 @@ const Course = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <GrayTopper />
-      <div className="grid">
-        <div className="grid-cols-12 md:grid-cols-4 ml-9 md:ml-0 lg:grid-cols-3">
+      <div className="grid grid-cols-12 mt-10">
+        <div className="col-span-12 md:col-span-4 lg:col-span-3">
           <CourseCard />
         </div>
-        <div className="grid-cols-12 md:grid-cols-8 mt-10 md:mt-0 lg:grid-cols-9">
+        <div className="col-span-12 md:col-span-8 lg:col-span-9 mt-5 md:mt-0">
           <UpdateCard />
         </div>
       </div>
@@ -85,14 +85,14 @@ function UpdateCard() {
 
   return (
     <div>
-      <div className="flex flex-col md:w-96 md:ml-9 md:-mt-64 xl:ml-60 xl:-mt-72 bg-gray-800 rounded-lg">
+      <div className="flex items-center justify-center border">
         <div className="h-4/6 shadow-2xl p-10">
           <h1 className="text-xl font-bold text-white">
             Update course details
           </h1>
           <div className="flex flex-col">
             <input
-              className="border mt-9 p-2 rounded-lg"
+              className="border mt-9 p-2 rounded-lg w-full my-32"
               value={title}
               placeholder="Title"
               onChange={(e) => {
@@ -177,14 +177,28 @@ function CourseCard() {
   const imageLink = useRecoilValue(courseImage);
 
   return (
-    <div className="dark:bg-slate-400">
-      <div className="mt-64 md:ml-auto md:mr-9 lg:mr-44 rounded-lg border bg-white w-72 shadow-lg">
-        <div className="">
-          <img src={imageLink} className="rounded-lg h-64"></img>
-        </div>
-        <div className="ml-10">
-          <h1 className="font-bold">{title}</h1>
-          <Price />
+    // <div className="dark:bg-slate-400">
+    //   <div className="mt-64 md:ml-auto md:mr-9 lg:mr-44 rounded-lg border bg-white w-72 shadow-lg">
+    //     <div className="">
+    //       <img src={imageLink} className="rounded-lg h-64"></img>
+    //     </div>
+    //     <div className="ml-10">
+    //       <h1 className="font-bold">{title}</h1>
+    //       <Price />
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="flex justify-end h-screen border shadow-lg p-5 w-3 lg:my-5 z-20">
+      <div>
+        <img className="p-8 rounded-lg" src={imageLink} alt="product image" />
+        <div className="px-5 pb-5 dark:bg-red-500">
+          <h5 className="text-lg font-bold tracking-wide">{title}</h5>
+          <div className="flex items-center justify-between">
+            <span className="text-lg font-bold">
+              ₹ <Price />
+            </span>
+          </div>
         </div>
       </div>
     </div>
