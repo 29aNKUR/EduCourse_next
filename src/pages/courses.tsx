@@ -17,7 +17,7 @@ function Courses() {
   }, []);
 
   return (
-    <div className="flex justify-center flex-wrap">
+    <div className="flex justify-center flex-wrap m-10">
       {courses.map((course) => {
         return <Course course={course} />;
       })}
@@ -27,9 +27,9 @@ function Courses() {
 
 export function Course({ course }: { course: Course }) {
   return (
-    <div className= "shadow-2xl p-5 w-52 lg:my-5">
+    <div className= " shadow-lg dark:shadow-2xl p-5 w-52 lg:my-5 mt-10">
       <Link href={`/courses/${course._id}`}>
-        <div>
+        <div className="mt-10 mx-10">
           <img
             className="p-8 rounded-lg"
             src={course.imageLink}

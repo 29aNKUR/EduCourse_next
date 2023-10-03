@@ -31,7 +31,7 @@ const addcourse = () => {
   };
 
   return (  
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen mt-10">
       <div className="my-7 border-2 p-5 shadow-2xl">
         <div className="mb-3">
           {/* <label htmlFor="title" className="block mb-1">Course Title</label> */}
@@ -75,7 +75,7 @@ const addcourse = () => {
         </div>
         <button
           onClick={() => handleAddCourse()}
-          className="border px-7 py-2 rounded-lg bg-indigo-600 text-white"
+          className="border px-10 py-2 rounded-lg bg-indigo-600 text-white"
         >
           Add Course
         </button>
