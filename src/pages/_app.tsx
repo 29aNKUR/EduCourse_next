@@ -37,7 +37,7 @@ export default function App({
   );
 }
 
-function Auth({ children }) {
+function Auth({ children }: {children: React.ReactNode}) {
   const { status } = useSession({ required: true });
 
   if (status === "loading") {
