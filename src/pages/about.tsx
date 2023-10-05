@@ -1,6 +1,6 @@
 const about = () => {
   return (
-    <div>
+    <div className="mt-10">
       <h1 className="text-2xl font-bold text-gray-600 dark:text-white">Welcome to Educourse, where knowledge meets opportunity! </h1>
       <br />
       <div className="text-gray-600 text-xl font-semibold dark:text-white">     At Educourse, our mission is to empower educators and learners alike by

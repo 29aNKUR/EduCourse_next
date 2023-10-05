@@ -7,7 +7,7 @@ export async function ensureDbConnected() {
             return;
         }
         alreadyDone = true;
-        await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+        await mongoose.connect(process.env.MONGO_URL);
         console.log("database connected");
     }
     catch {
