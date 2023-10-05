@@ -5,12 +5,18 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "next-themes";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import type { NextComponentType } from 'next';
+
+type CustomAppProps = AppProps & {
+  Component: NextComponentType & {auth?: boolean}
+}
+
 
 //component points to index.tsx
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
-}: AppProps) {
+}: CustomAppProps) {
   return (
     <RecoilRoot>
       <ThemeProvider attribute="class">
