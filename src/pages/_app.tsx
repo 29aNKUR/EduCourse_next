@@ -46,3 +46,6 @@ function Auth({ children }: {children: React.ReactNode}) {
 
   return children;
 }
+
+
+//Problem - user should be redirected to our custom created login page if not logged in 

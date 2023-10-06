@@ -51,48 +51,53 @@ export default function SignIn({
   });
 
   return (
-    <>
-      {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
-          <button onClick={() => signIn(provider.id)}>
-            Sign in with {provider.name}
-          </button>
-        </div>
-      ))}
-      <form onSubmit={formik.handleSubmit}>
-        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-        <label>
-          Username
-          <input
-            name="username"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.username}
-          />
-          {formik.errors.username && formik.touched.username ? (
-            <p className="text-red-500 text-xs italic">
-              {formik.errors.username}
-            </p>
-          ) : null}
-        </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-          {formik.errors.password && formik.touched.password ? (
-            <p className="text-red-500 text-xs italic">
-              {formik.errors.password}
-            </p>
-          ) : null}
-        </label>
-        <button type="submit">Sign in</button>
-        <Toaster />
-      </form>
-    </>
+    <div className="w-screen h-screen flex justify-center items-center
+    bg-gradient-to-br from-purple-700 to-amber-700">
+        {Object.values(providers).map((provider) => (
+          <div key={provider.name} className="flex flex-col justify-center mt-10">
+            <button onClick={() => signIn(provider.id)} className="bg-indigo-700 border font-bold text-xl w-48">
+              Sign in with {provider.name}
+            </button>
+          </div>
+        ))}
+
+        {" "}
+        <form onSubmit={formik.handleSubmit} className="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <label>
+            Username
+            <input
+            className="w-96 px-3 py-2 rounded-md border border-slate-400" 
+              name="username"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.username}
+            />
+            {formik.errors.username && formik.touched.username ? (
+              <p className="text-red-500 text-xs italic">
+                {formik.errors.username}
+              </p>
+            ) : null}
+          </label>
+          <label>
+            Password
+            <input
+            className="w-96 px-3 py-2 rounded-md border border-slate-400"
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
+            {formik.errors.password && formik.touched.password ? (
+              <p className="text-red-500 text-xs italic">
+                {formik.errors.password}
+              </p>
+            ) : null}
+          </label>
+          <button type="submit">Sign in</button>
+          <Toaster />
+        </form>
+    </div>
   );
 }
 
