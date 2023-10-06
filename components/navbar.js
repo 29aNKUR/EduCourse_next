@@ -92,9 +92,9 @@ const Navbar = () => {
                     )}
 
                     {!session?.data && (
-                      <Link href="/">
+                      <Link href="/login">
                         <button
-                          onClick={() => signIn()}
+                          // onClick={() => signIn()}
                           className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5"
                         >
                           Get Started
@@ -151,9 +151,9 @@ const Navbar = () => {
           )}
 
           {!session?.data && (
-            <Link href="/">
+            <Link href="/login">
               <button
-                onClick={() => signIn()}
+                // onClick={() => signIn()}
                 className=" px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5"
               >
                 Get Started

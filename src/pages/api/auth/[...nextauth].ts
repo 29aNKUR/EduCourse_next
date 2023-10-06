@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import {Provider} from "next-auth/providers";
 import { ensureDbConnected } from '@/lib/dbConnect';
-import { Admin } from "@/lib/db";
+import { Admin, signupSchema } from "@/lib/db";
 import GoogleProvider from "next-auth/providers/google"
 
 export const authOptions = {
@@ -25,13 +25,15 @@ export const authOptions = {
                 if (!credentials) {
                     return null;
                 }
-                const username = credentials.username;
-                const password = credentials.password;
+                const creds = await signupSchema.parseAsync(credentials);
+                console.log(creds)
+                const username1 =  creds.username;
+                const password1 =  creds.password;
                 // Add logic here to look up the user from the credentials supplied
-                const admin = await Admin.findOne({ username });
+                const admin = await Admin.findOne({ username1 });
 
                 if (!admin) {
-                    const obj = { username: username, password: password };
+                    const obj = { username: username1, password: password1 };
                     const newAdmin = new Admin(obj);
                     let adminDb = await newAdmin.save();
                     // console.log(adminDb);
@@ -41,13 +43,13 @@ export const authOptions = {
                     }
                 } else {
                     //TODO:: Make this safer, encrypt passwords
-                    if (admin.password !== password) {
+                    if (admin.password1 !== password1) {
                         return null
                     }
                     // User is authenticated
                     return {
                         id: admin._id,
-                        email: admin.username,
+                        email: admin.username1,
                     }
                 }
             }
