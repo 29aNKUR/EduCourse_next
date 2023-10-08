@@ -10,7 +10,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-
+import { NEXT_URL } from "../../../config";
 const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
@@ -139,7 +139,7 @@ function UpdateCard() {
           className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXTAUTH_URL}/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${NEXT_URL}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -166,7 +166,7 @@ function UpdateCard() {
           className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXTAUTH_URL}/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${NEXT_URL}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
