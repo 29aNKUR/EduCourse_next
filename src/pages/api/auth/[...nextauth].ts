@@ -2,16 +2,14 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { ensureDbConnected } from "@/lib/dbConnect";
 import { Admin, signupSchema } from "@/lib/db";
-import { GetServerSessionOptions } from "next-auth/server"; // Import GetServerSessionOptions
-import { Provider } from "next-auth/providers";
 import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions: GetServerSessionOptions = { // Add type annotation
+export const authOptions: any = { // Add type annotation
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.NEXT_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.NEXT_GOOGLE_CLIENT_SECRET,
+      clientId: process.env.NEXT_GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.NEXT_GOOGLE_CLIENT_SECRET || '',
     }),
     CredentialsProvider({
       id: "credentials",
@@ -55,7 +53,7 @@ export const authOptions: GetServerSessionOptions = { // Add type annotation
         }
       },
     }),
-  ] as Provider[],
+  ],
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
