@@ -7,7 +7,7 @@ function Courses() {
   const [courses, setCourses] = useState([]);
   const allcourses = async () => {
     const response = await axios.get(
-      "http://localhost:3000/api/admin/courses/"
+      `${process.env.NEXTAUTH_URL}/api/admin/courses/`
     );
     setCourses(response.data.courses);
   };

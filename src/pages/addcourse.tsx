@@ -23,7 +23,7 @@ const addcourse = () => {
     onSubmit: async (data) => {
       try {
         const response = await axios.put(
-          "http://localhost:3000/api/admin/addCourse",
+          `${process.env.NEXTAUTH_URL}/api/admin/addCourse`,
           {
             title: data.title,
             description: data.description,

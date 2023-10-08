@@ -20,7 +20,7 @@ const Course = () => {
   const init = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/admin/${query.id}/route`
+        `${process.env.NEXTAUTH_URL}/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
       //   console.log(response);
@@ -139,7 +139,7 @@ function UpdateCard() {
           className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
           onClick={async () => {
             axios.put(
-              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${process.env.NEXTAUTH_URL}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -166,7 +166,7 @@ function UpdateCard() {
           className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
           onClick={async () => {
             axios.put(
-              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${process.env.NEXTAUTH_URL}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
