@@ -70,19 +70,28 @@ function GrayTopper() {
 function UpdateCard() {
   const router = useRouter();
   const [courseDetails, setCourse] = useRecoilState(courseState);
-  const [title, setTitle] = useState(courseDetails?.course?.title);
+  const [title, setTitle] = useState(courseDetails?.course?.title || "");
   const [description, setDescription] = useState(
-    courseDetails?.course?.description
+    courseDetails?.course?.description || ""
   );
-  const [image, setImage] = useState(courseDetails?.course?.imageLink);
-  const [price, setPrice] = useState(courseDetails?.course?.price);
+  const [image, setImage] = useState(courseDetails?.course?.imageLink || "");
+  const [price, setPrice] = useState<number | undefined>(
+    typeof courseDetails?.course?.price === 'number'
+      ? courseDetails?.course?.price
+      : parseFloat(courseDetails?.course?.price || '0')
+  );
+  
 
   //For re-render the page to get correct course details in update card
   useEffect(() => {
-    setTitle(courseDetails?.course?.title);
-    setDescription(courseDetails?.course?.description);
-    setImage(courseDetails?.course?.imageLink);
-    setPrice(courseDetails?.course?.price);
+    setTitle(courseDetails?.course?.title || "");
+    setDescription(courseDetails?.course?.description || "");
+    setImage(courseDetails?.course?.imageLink || "");
+    setPrice(
+      typeof courseDetails?.course?.price === 'number'
+        ? courseDetails?.course?.price
+        : parseFloat(courseDetails?.course?.price || '0')
+    );
   }, [courseDetails]);
 
   return (
@@ -119,8 +128,9 @@ function UpdateCard() {
           className="border rounded-lg p-5"
           value={price}
           placeholder="Price"
-          onChange={(e) => {
-            setPrice(e.target.value);
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const inputValue = parseFloat(e.target.value)
+            {(!isNaN(inputValue)) ? setPrice(inputValue) : setPrice(0)}
           }}
         />
       </div>
@@ -135,15 +145,15 @@ function UpdateCard() {
                 description: description,
                 imageLink: image,
                 published: true,
-                price: price,
+                price: price || 0,
               }
             );
             let updatedCourse = {
-              _id: courseDetails?.course?._id,
+              _id: courseDetails?.course?._id || '',
               title: title,
               description: description,
               imageLink: image,
-              price: price,
+              price: price || 0,
             };
             setCourse({ course: updatedCourse });
             alert("course updated!");

@@ -41,7 +41,6 @@ export const authOptions: any = { // Add type annotation
             email: adminDb.username,
           };
         } else {
-          // TODO: Make this safer, encrypt passwords
           if (admin.password1 !== password1) {
             return null;
           }
