@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-            Your Path to Lifelong Learning
+              Your Path to Lifelong Learning
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
               EduCourse is your one-stop destination for online learning. Dive
@@ -66,7 +66,8 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700 dark:text-white">
-          Our Alumni works at some of the  <span className="text-indigo-600">best companies in the world</span>
+            Our Alumni works at some of the{" "}
+            <span className="text-indigo-600">best companies in the world</span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">

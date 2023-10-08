@@ -4,7 +4,7 @@ import {
   PencilSquareIcon,
   ClipboardDocumentCheckIcon,
   ClockIcon,
-  ViewfinderCircleIcon
+  ViewfinderCircleIcon,
 } from "@heroicons/react/24/solid";
 
 import benefitOneImg from "../public/img/benefit-one.png";
@@ -18,7 +18,7 @@ const benefitOne = {
     {
       title: "Diverse Course Selection",
       desc: " Explore a vast library of courses, from academic subjects to professional skills and hobbies.",
-      icon: <  AcademicCapIcon />,
+      icon: <AcademicCapIcon />,
     },
     {
       title: "Expert Instructors",
@@ -57,5 +57,3 @@ const benefitTwo = {
 };
 
 export { benefitOne, benefitTwo };
-
-
