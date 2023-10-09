@@ -65,7 +65,7 @@ export default function SignIn({
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center mt-10">
       <div>
         <form
           onSubmit={(e) => {

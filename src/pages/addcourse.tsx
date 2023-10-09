@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import * as Yup from "yup"; // Use lowercase 'y' for Yup
-import { NEXT_URL } from "../../config";
 
 const addcourse = () => {
   const router = useRouter();
@@ -24,7 +23,7 @@ const addcourse = () => {
     onSubmit: async (data) => {
       try {
         const response = await axios.put(
-          `${NEXT_URL}/api/admin/addCourse`,
+          `${process.env.NEXTAUTH_URL || ''}/api/admin/addCourse`,
           {
             title: data.title,
             description: data.description,
@@ -107,7 +106,7 @@ const addcourse = () => {
           </div>
           <button
             type="submit"
-            className="border px-10 py-2 rounded-lg bg-indigo-600 text-white"
+            className="button"
           >
             Add Course
           </button>

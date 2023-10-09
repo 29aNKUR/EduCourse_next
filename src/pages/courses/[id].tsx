@@ -10,7 +10,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { NEXT_URL } from "../../../config";
 const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
@@ -20,7 +19,7 @@ const Course = () => {
   const init = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXTAUTH_URL}/api/admin/${query.id}/route`
+        `${process.env.NEXTAUTH_URL || ''}/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
       //   console.log(response);
@@ -55,7 +54,7 @@ export default Course;
 function GrayTopper() {
   const title = useRecoilValue(courseTitle);
   return (
-    <div className="h-60 bg-gray-900 top-0 min-w-full -mb-96">
+    <div className="h-60 bg-gray-900 top-0 min-w-full -mb-96 mt-10">
       <div className="h-60 flex justify-center flex-col">
         <div>
           <h1 className="text-2xl flex justify-center -mt-20 font-bold">
@@ -95,11 +94,11 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div className="p-5 border">
+    <div className="p-5 border shadow-lg">
       <h1 className="text-xl font-bold mb-4">Update course details</h1>
       <div className="flex flex-col">
         <input
-          className="border rounded-lg p-5"
+          className="border rounded-lg py-4 px-2 mb-5"
           value={title}
           placeholder="Title"
           onChange={(e) => {
@@ -108,7 +107,7 @@ function UpdateCard() {
         />
 
         <input
-          className="border rounded-lg p-5"
+          className="border rounded-lg py-4 px-2 mb-5"
           value={description}
           placeholder="Description"
           onChange={(e) => {
@@ -117,7 +116,7 @@ function UpdateCard() {
         />
 
         <input
-          className="border rounded-lg p-5"
+          className="border rounded-lg py-4 px-2 mb-5"
           value={image}
           placeholder="ImageLink"
           onChange={(e) => {
@@ -125,7 +124,7 @@ function UpdateCard() {
           }}
         />
         <input
-          className="border rounded-lg p-5"
+          className="border rounded-lg py-4 px-2"
           value={price}
           placeholder="Price"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -136,10 +135,10 @@ function UpdateCard() {
       </div>
       <div className="flex justify-between mt-5">
         <button
-          className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
+          className="button"
           onClick={async () => {
             axios.put(
-              `${NEXT_URL}/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${process.env.NEXTAUTH_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -163,10 +162,10 @@ function UpdateCard() {
         </button>
 
         <button
-          className="border px-2 py-2 rounded-lg bg-indigo-600 text-white"
+          className="button"
           onClick={async () => {
             axios.put(
-              `${NEXT_URL}/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${process.env.NEXTAUTH_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
@@ -196,7 +195,7 @@ function CourseCard() {
     //   </div>
     // </div>
 
-    <div className="flex justify-end h-screen border shadow-2xl p-5 w-3 lg:my-5 z-20">
+    <div className="flex justify-end h-screen border shadow-lg p-5 w-3 lg:my-5 z-20">
       <div>
         <img className="p-8 rounded-lg" src={imageLink} alt="product image" />
         <div className="px-5 pb-5 dark:bg-red-500">
