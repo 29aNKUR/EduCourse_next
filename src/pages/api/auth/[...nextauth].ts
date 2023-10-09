@@ -29,8 +29,8 @@ export const authOptions: any = { // Add type annotation
         const username1 = creds.username;
         const password1 = creds.password;
         // Add logic here to look up the user from the credentials supplied
-        const admin = await Admin.findOne({ username1 });
-
+        const admin = await Admin.findOne({ username: username1 }); // Updated property name
+      
         if (!admin) {
           const obj = { username: username1, password: password1 };
           const newAdmin = new Admin(obj);
@@ -47,7 +47,7 @@ export const authOptions: any = { // Add type annotation
           // User is authenticated
           return {
             id: admin._id,
-            email: admin.username1,
+            email: admin.username,
           };
         }
       },

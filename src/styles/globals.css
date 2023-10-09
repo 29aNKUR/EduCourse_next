@@ -9,3 +9,40 @@
     }
   }
   
+
+  .error{
+    /* background-color:red; */
+    color:rgb(247, 52, 52);
+    font-size: small;
+    font-style: italic;
+  }
+
+
+  .form{
+    padding: 10px; 
+    border-radius: 10px; 
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); 
+  }
+
+  .formdark{
+    padding: 10px; 
+    border-radius: 10px; 
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0px 0px 5px 0px rgba(255, 254, 254, 0.5); 
+  }
+
+  .button {
+    background-color: rgb(79, 70, 229);
+    font-size: large;
+    padding: 10px 20px; /* Increase padding for a more pronounced button */
+    margin-top: 10px;
+    border: none; /* Remove the border */
+    border-radius: 10px; /* Add rounded corners */
+    color: white; /* White text color */
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer; /* Add a pointer cursor for better interaction */
+  }
+  

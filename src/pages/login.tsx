@@ -29,74 +29,135 @@ export default function SignIn({
     }),
 
     onSubmit: async (data) => {
-      toast.loading("Logging you in...", { duration: 1000 });
+      if (formik.isValid) {
+        toast.loading("Logging you in...", { duration: 1000 });
 
-      const loginData = {
-        username: data.username,
-        password: data.password,
-        callbackUrl: "/",
-        redirect: false,
-      };
+        const loginData = {
+          username: data.username,
+          password: data.password,
+          callbackUrl: "/",
+          redirect: false,
+        };
 
-      const login = await signIn("credentials", loginData);
-      console.log(login);
+        const login = await signIn("credentials", loginData);
+        console.log(login);
 
-      if (login?.ok) {
-        toast.success("Successfully Logged in! Redirecting...");
-        router.push("/");
-      } else {
-        toast.error("Login failed.");
+        if (login?.ok) {
+          toast.success("Successfully Logged in! Redirecting...");
+          router.push("/");
+        } else {
+          toast.error("Login failed.");
+        }
       }
     },
   });
 
-  return (
-    <div className="w-screen h-screen flex justify-center items-center
-    bg-gradient-to-br from-purple-700 to-amber-700">
-        {Object.values(providers).map((provider) => (
-          <div key={provider.name} className="flex flex-col justify-center mt-10">
-            <button onClick={() => signIn(provider.id)} className="bg-indigo-700 border font-bold text-xl w-48">
-              Sign in with {provider.name}
-            </button>
-          </div>
-        ))}
+  const handleGoogleSignInClick = (e: any) => {
+    // Prevent the default behavior for the "Sign in with Google" button
+    e.preventDefault();
 
-        {" "}
-        <form onSubmit={formik.handleSubmit} className="p-10 bg-white rounded-xl drop-shadow-lg space-y-5">
+    // Add your custom Google sign-in logic here
+    // For example, you can use the signIn function from NextAuth.js
+    signIn("google"); // Replace "google" with your Google provider name
+
+    // You may also want to display a loading message or other UI feedback
+    toast.loading("Signing in with Google...", { duration: 1000 });
+  };
+
+  return (
+    <div className="w-screen h-screen flex justify-center items-center">
+      <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            formik.submitForm(); // Use formik.submitForm() to submit the form
+          }}
+          className="form"
+        >
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-          <label>
+          <label className="block font-bold my-5">
             Username
             <input
-            className="w-96 px-3 py-2 rounded-md border border-slate-400" 
+              className="w-full px-3 py-2 rounded-md border border-slate-400 dark:text-white dark:bg-gray-700"
               name="username"
               type="text"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.username}
             />
-            {formik.errors.username && formik.touched.username ? (
-              <p className="text-red-500 text-xs italic">
+            {formik.touched.username && formik.errors.username ? (
+              <p className="error">
                 {formik.errors.username}
               </p>
             ) : null}
           </label>
-          <label>
+          <label className="block font-bold my-5">
             Password
             <input
-            className="w-96 px-3 py-2 rounded-md border border-slate-400"
+              className="w-full px-3 py-2 rounded-md border border-slate-400 dark:text-white dark:bg-gray-700"
               name="password"
               type="password"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.password}
             />
-            {formik.errors.password && formik.touched.password ? (
-              <p className="text-red-500 text-xs italic">
+            {formik.touched.password && formik.errors.password ? (
+                <p className="error">
                 {formik.errors.password}
               </p>
             ) : null}
           </label>
-          <button type="submit">Sign in</button>
+          <div className="flex flex-col items-center">
+            {/* {Object.values(providers).map((provider) => (
+            <button
+              type="submit"
+              key={provider.name}
+              className="bg-indigo-700 hover:bg-indigo-800 dark:text-white font-bold text-xl px-4 py-2 rounded-md mt-4 border shadow-lg"
+            >
+              Sign in with {provider.name}
+            </button>
+          ))} */}
+            {Object.values(providers).map((provider) => {
+              if (provider.name === "Credentials") {
+                return (
+                  <button
+                    type="submit"
+                    key={provider.name}
+                    className="button"
+                  >
+                    Sign in with {provider.name}
+                  </button>
+                );
+              }
+              return null;
+            })}
+
+            <hr />
+            <br />
+            <span className="text-sm text-gray-500 dark:text-white">---------------or---------------</span>
+            {Object.values(providers).map((provider) => {
+              if (provider.name === "Google") {
+                return (
+                  <button
+                    key={provider.name}
+                    onClick={handleGoogleSignInClick} // Add the click handler
+                    className="button"
+                  >
+                    Sign in with {provider.name}
+                  </button>
+                );
+              }
+              return null;
+            })}
+          </div>
+
+         
+ 
           <Toaster />
         </form>
+      </div>
+
+      <hr />
     </div>
   );
 }
