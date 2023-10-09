@@ -34,7 +34,7 @@ export default function Footer() {
               </Link>
             </div>
 
-            <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
+            <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400 hidden md:block">
               EduCourse is your one-stop destination for online learning. Dive
               into a world of knowledge and skill-building with a vast catalog
               of courses taught by experts from around the globe.
