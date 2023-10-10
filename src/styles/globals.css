@@ -44,5 +44,7 @@
     color: white; /* White text color */
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
     cursor: pointer; /* Add a pointer cursor for better interaction */
+    margin-left: 10px;
+    margin-right:10px; 
   }
   
