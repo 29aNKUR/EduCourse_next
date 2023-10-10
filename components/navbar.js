@@ -5,13 +5,11 @@ import { Disclosure } from "@headlessui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-  // const navigation = ["Courses", "Features", "Pricing", "Company", "About"];
   const session = useSession();
 
   return (
     <div className="w-full">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0 shadow-lg">
-        {/* Logo  */}
         <Disclosure>
           {({ open }) => (
             <>
@@ -58,9 +56,7 @@ const Navbar = () => {
 
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
-                    {/* {navigation.map((item, index) => ( */}
-
-                    <Link
+                              <Link
                       href="/courses"
                       className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none"
                     >
@@ -94,7 +90,7 @@ const Navbar = () => {
                     {!session?.data && (
                       <Link href="/login">
                         <button
-                          // onClick={() => signIn()}
+              
                           className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5"
                         >
                           Get Started
@@ -108,10 +104,9 @@ const Navbar = () => {
           )}
         </Disclosure>
 
-        {/* menu  */}
+
         <div className="hidden text-center lg:flex lg:items-center">
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-            {/* {navigation.map((menu, index) => ( */}
             <li className="mr-3 nav__item">
               <Link
                 href="/courses"
@@ -134,7 +129,7 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            {/* ))} */}
+
           </ul>
         </div>
 
@@ -153,7 +148,7 @@ const Navbar = () => {
           {!session?.data && (
             <Link href="/login">
               <button
-                // onClick={() => signIn()}
+          
                 className=" px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5"
               >
                 Get Started

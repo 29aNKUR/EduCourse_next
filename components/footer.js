@@ -4,13 +4,6 @@ import React from "react";
 import Container from "./container";
 
 export default function Footer() {
-  // const navigation = [
-  //   "Courses",
-  //   "Features",
-  //   "Pricing",
-  //   "Company",
-  //   "About",
-  // ];
   const legal = ["Terms", "Privacy", "Legal"];
   return (
     <div className="relative">
@@ -39,32 +32,7 @@ export default function Footer() {
               into a world of knowledge and skill-building with a vast catalog
               of courses taught by experts from around the globe.
             </div>
-
-            {/* <div className="mt-5">
-              <a
-                href="https://vercel.com/?utm_source=web3templates&utm_campaign=oss"
-                target="_blank"
-                rel="noopener"
-                className="relative block w-44">
-                <Image
-                  src="/img/vercel.svg"
-                  alt="Powered by Vercel"
-                  width="212"
-                  height="44"
-                />
-              </a>
-            </div> */}
           </div>
-
-          {/* <div> */}
-          {/* <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0"> */}
-          {/* {navigation.map((item, index) => ( */}
-          {/* <Link href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">                 
-                    Courses
-                </Link> */}
-          {/* ))} */}
-          {/* </div> */}
-          {/* </div> */}
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
               {legal.map((item, index) => (
