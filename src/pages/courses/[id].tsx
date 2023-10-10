@@ -19,7 +19,7 @@ const Course = () => {
   const init = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXTAUTH_URL || ''}/api/admin/${query.id}/route`
+        `${process.env.NEXT_BASE_URL || ''}/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
       //   console.log(response);
@@ -138,7 +138,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXTAUTH_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${process.env.NEXT_BASE_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -165,7 +165,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXTAUTH_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${process.env.NEXT_BASE_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");

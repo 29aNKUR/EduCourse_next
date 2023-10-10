@@ -23,7 +23,7 @@ const addcourse = () => {
     onSubmit: async (data) => {
       try {
         const response = await axios.put(
-          `${process.env.NEXTAUTH_URL || ''}/api/admin/addCourse`,
+          `${process.env.NEXT_BASE_URL || ''}/api/admin/addCourse`,
           {
             title: data.title,
             description: data.description,
@@ -117,3 +117,6 @@ const addcourse = () => {
 };
 
 export default addcourse;
+
+//added for custom client session handling
+addcourse.auth = true;

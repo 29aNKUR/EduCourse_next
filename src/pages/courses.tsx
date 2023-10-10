@@ -8,7 +8,7 @@ function Courses() {
   const [courses, setCourses] = useState([]);
   const allcourses = async () => {
     const response = await axios.get(
-      `${process.env.NEXTAUTH_URL || ''}/api/admin/courses/`
+      `${process.env.NEXT_BASE_URL || ''}/api/admin/courses/`
     );
     setCourses(response.data.courses);
   };
