@@ -1,3 +1,4 @@
+import { NEXT_URL } from "@/config";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
@@ -23,7 +24,7 @@ const addcourse = () => {
     onSubmit: async (data) => {
       try {
         const response = await axios.put(
-          `${process.env.NEXT_BASE_URL || ''}/api/admin/addCourse`,
+          `${NEXT_URL || ''}/api/admin/addCourse`,
           {
             title: data.title,
             description: data.description,

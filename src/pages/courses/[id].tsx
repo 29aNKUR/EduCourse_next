@@ -1,4 +1,5 @@
 //Working
+import { NEXT_URL } from "@/config";
 import { courseState } from "@/store/atoms/course";
 import {
   courseDescription,
@@ -10,6 +11,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+
 const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
@@ -19,7 +21,7 @@ const Course = () => {
   const init = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_BASE_URL || ''}/api/admin/${query.id}/route`
+        `${NEXT_URL || ''}/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
       //   console.log(response);
@@ -138,7 +140,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXT_BASE_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${NEXT_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -165,7 +167,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `${process.env.NEXT_BASE_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${NEXT_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
