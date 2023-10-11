@@ -15,8 +15,8 @@ export default async (req: NextApiRequest,res: NextApiResponse) => {
     await ensureDbConnected();
     const courses = await Course.find({});
     if(courses){
-      res.status(200).json({sucess: true , courses});
+      return res.status(200).json({sucess: true , courses});
     }
-    res.status(404).json({success: false, message:"No Course is present"})
+    return res.status(404).json({success: false, message:"No Course is present"})
     
 }
