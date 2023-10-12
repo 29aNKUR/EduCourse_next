@@ -13,11 +13,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   return;
   // }
 
-  const session = await getServerSession(req,res,authOptions);
-  if(!session){
-    res.send({error:"Unauthorized"})
-  }
-  else {
+  // const session = await getServerSession(req,res,authOptions);
+  // if(!session){
+  //   res.send({error:"Unauthorized"})
+  // }
+  // else {
     await ensureDbConnected();
     try {
       const course = new Course(req.body);
@@ -31,6 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  }
+  // }
 
 };

@@ -41,7 +41,7 @@ export const authOptions: any = { // Add type annotation
             email: adminDb.username,
           };
         } else {
-          if (admin.password1 !== password1) {
+          if (admin.password !== password1) {
             return null;
           }
           // User is authenticated

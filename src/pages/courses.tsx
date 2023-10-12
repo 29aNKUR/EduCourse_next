@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NEXT_URL } from "@/config";
 function Courses() {
   const [courses, setCourses] = useState([]);
+  
   const allcourses = async () => {
     const response = await axios.get(
       `${NEXT_URL}/api/admin/courses/`
