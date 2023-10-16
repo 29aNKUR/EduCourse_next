@@ -15,14 +15,14 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
-
-  if(!query) return 'Loading;...'
+  const id = query?.id;
+  if(!id) return 'Loading;...'
   const setCourse = useSetRecoilState(courseState);
 
   const init = async () => {
 
       const response = await axios.get(
-        `https://edu-course-next.vercel.app/api/admin/${query.id}/route`
+        `https://edu-course-next.vercel.app/api/admin/${id}/route`
       );
       
       // setCourse({ course: response?.data?.course });
