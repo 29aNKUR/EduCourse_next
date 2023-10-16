@@ -20,15 +20,14 @@ const Course = () => {
   const setCourse = useSetRecoilState(courseState);
 
   const init = async () => {
-    try {
+
       const response = await axios.get(
-        `/api/admin/${query.id}/route`
+        `https://edu-course-next.vercel.app/api/admin/${query.id}/route`
       );
-      setCourse({ course: response?.data?.course });
-      //   console.log(response);
-    } catch (e) {
-      console.log(e);
-    }
+      
+      // setCourse({ course: response?.data?.course });
+        console.log(response);
+
   };
 
   useEffect(() => {
