@@ -8,7 +8,7 @@ function Courses() {
   
   const allcourses = async () => {
     const response = await axios.get(
-      `${NEXT_URL}/api/admin/courses/`
+      `/api/admin/courses/`
     );
     setCourses(response.data.courses);
   };
@@ -32,7 +32,7 @@ export function Course({ course }: { course: Course }) {
       <Link href={`/courses/${course._id}`}>
         <div className="mt-10 mx-10">
           <img
-            className="p-8 rounded-lg"
+            className="p-8 rounded-lg4"
             src={course.imageLink}
             alt="product image"
           />

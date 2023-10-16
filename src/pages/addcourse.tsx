@@ -55,7 +55,7 @@ const addcourse = () => {
               value={formik.values.title}
             />
             {formik.errors.title && formik.touched.title ? (
-              <p className="text-red-500 text-xs italic">
+              <p className="error">
                 {formik.errors.title}
               </p>
             ) : null}
@@ -70,7 +70,7 @@ const addcourse = () => {
               value={formik.values.description}
             />
             {formik.errors.description && formik.touched.description ? (
-              <p className="text-red-500 text-xs italic">
+              <p className="error">
                 {formik.errors.description}
               </p>
             ) : null}
@@ -85,7 +85,7 @@ const addcourse = () => {
               value={formik.values.image}
             />
             {formik.errors.image && formik.touched.image ? (
-              <p className="text-red-500 text-xs italic">
+              <p className="error">
                 {formik.errors.image}
               </p>
             ) : null}
@@ -100,7 +100,7 @@ const addcourse = () => {
               value={formik.values.price}
             />
             {formik.errors.price && formik.touched.price ? (
-              <p className="text-red-500 text-xs italic">
+              <p className="error">
                 {formik.errors.price}
               </p>
             ) : null}
