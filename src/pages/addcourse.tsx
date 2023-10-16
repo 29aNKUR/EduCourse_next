@@ -33,7 +33,7 @@ const addcourse = () => {
         );
         toast.success("Course added successfully! Redirecting...");
         console.log(response);
-        router.push("/");
+        router.push("/courses");
       } catch (e) {
         toast.error("Something went wrong!")
         console.error(e);
