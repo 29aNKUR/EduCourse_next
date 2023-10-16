@@ -17,6 +17,7 @@ function Courses() {
     allcourses();
   }, []);
 
+  if(!courses) return 'Loading...'
   return (
     <div className="flex justify-center flex-wrap m-10">
       {courses.map((course) => {

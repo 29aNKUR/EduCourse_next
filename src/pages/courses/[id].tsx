@@ -1,4 +1,5 @@
 //Working
+import { NEXT_URL } from "@/config";
 import { courseState } from "@/store/atoms/course";
 import {
   courseDescription,
@@ -20,7 +21,7 @@ const Course = () => {
   const init = async () => {
     try {
       const response = await axios.get(
-        `/api/admin/${query.id}/route`
+        `${NEXT_URL || ''}/api/admin/${query.id}/route`
       );
       setCourse({ course: response?.data?.course });
       //   console.log(response);
@@ -139,7 +140,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `${NEXT_URL || ''}/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -166,7 +167,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `${NEXT_URL || ''}/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
