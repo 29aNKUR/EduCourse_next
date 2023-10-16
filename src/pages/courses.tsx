@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Course } from "@/store/atoms/course.js";
 import Link from "next/link";
-import { NEXT_URL } from "@/config";
 function Courses() {
   const [courses, setCourses] = useState([]);
   
@@ -11,6 +10,7 @@ function Courses() {
       `/api/admin/courses/`
     );
     setCourses(response.data.courses);
+
   };
 
   useEffect(() => {

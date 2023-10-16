@@ -1,4 +1,3 @@
-import { NEXT_URL } from "@/config";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
@@ -24,7 +23,7 @@ const addcourse = () => {
     onSubmit: async (data) => {
       try {
         const response = await axios.put(
-          `${NEXT_URL || ''}/api/admin/addCourse`,
+          `/api/admin/addCourse`,
           {
             title: data.title,
             description: data.description,
@@ -32,10 +31,11 @@ const addcourse = () => {
             price: data.price,
           }
         );
-        alert("course added!");
+        toast.success("Course added successfully! Redirecting...");
         console.log(response);
         router.push("/");
       } catch (e) {
+        toast.error("Something went wrong!")
         console.error(e);
       }
     },
