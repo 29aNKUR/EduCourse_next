@@ -29,7 +29,7 @@ function Courses() {
 
 export function Course({ course }: { course: Course }) {
   return (
-    <div className= " shadow-lg dark:shadow-2xl p-5 w-52 lg:my-5 mt-10">
+    <div className= "shadow-lg dark:shadow-2xl p-5 w-52 lg:my-5 mt-10">
       <Link href={`/courses/${course._id}`}>
         <div className="mt-10 mx-10">
           <img
