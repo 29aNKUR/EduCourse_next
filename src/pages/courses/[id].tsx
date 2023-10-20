@@ -20,7 +20,7 @@ const Course = () => {
   const init = async () => {
 
       const response = await axios.get(
-        `/api/admin/${query.id}/route`
+        `http://localhost:3000/api/admin/${query.id}/route`
       );
       
       setCourse({ course: response?.data?.course[0] });
@@ -140,7 +140,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -167,7 +167,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
@@ -199,7 +199,7 @@ function CourseCard() {
 
     <div className="flex justify-end h-screen border shadow-lg p-5 w-3 lg:my-5 z-20">
       <div>
-        <img className="p-8 rounded-lg" src={imageLink} alt="product image" />
+        <img className="rounded-lg" src={imageLink} alt="product image"/>
         <div className="px-5 pb-5 dark:bg-red-500">
           <h5 className="text-lg font-bold tracking-wide">{title}</h5>
           <div className="flex items-center justify-between">
