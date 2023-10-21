@@ -16,7 +16,7 @@ function Courses() {
 
   if (!courses) return "Loading...";
   return (
-    <div className="flex justify-center flex-wrap">
+    <div className="flex justify-center flex-wrap mt-10">
       {courses.map((course) => {
         return <Course course={course} />;
       })}
