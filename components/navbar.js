@@ -20,7 +20,7 @@ const Navbar = () => {
                       <Image
                         src="/img/logo.svg"
                         alt="E"
-                        width="32"
+                        width="32"  
                         height="32"
                         className="w-8"
                       />

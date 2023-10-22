@@ -96,7 +96,7 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div className="p-5 border shadow-lg">
+    <div className="p-5 border shadow-lg rounded-lg">
       <h1 className="text-xl font-bold mb-4">Update course details</h1>
       <div className="flex flex-col">
         <input
@@ -197,9 +197,9 @@ function CourseCard() {
     //   </div>
     // </div>
 
-    <div className="flex justify-end h-screen border shadow-lg p-5 w-3 lg:my-5 z-20">
+    <div className="flex justify-center h-screen border shadow-lg p-5 w-3 lg:my-5 z-20 rounded-lg">
       <div>
-        <img className="rounded-lg" src={imageLink} alt="product image"/>
+        <img className="rounded-lg flex justify-start" src={imageLink} alt="product image" style={{ height: "400px", width: "400px" }}/>
         <div className="px-5 pb-5 dark:bg-red-500">
           <h5 className="text-lg font-bold tracking-wide">{title}</h5>
           <div className="flex items-center justify-between">
