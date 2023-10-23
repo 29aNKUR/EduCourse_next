@@ -20,7 +20,7 @@ const Course = () => {
   const init = async () => {
 
       const response = await axios.get(
-        `http://localhost:3000/api/admin/${query.id}/route`
+        `/api/admin/${query.id}/route`
       );
       
       setCourse({ course: response?.data?.course[0] });
@@ -140,7 +140,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `/api/admin/${courseDetails?.course?._id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -167,7 +167,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `http://localhost:3000/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `/api/admin/${courseDetails?.course?._id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
