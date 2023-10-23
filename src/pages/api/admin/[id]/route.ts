@@ -13,7 +13,7 @@ export default async (req: NextApiRequest,res: NextApiResponse) => {
     }
 
     await ensureDbConnected();
-    const courseId = await req.query.id;
+    const courseId = req.query.id;
     console.log(courseId, "id");
     const course = await Course.find({ _id: courseId});
     if(course){
