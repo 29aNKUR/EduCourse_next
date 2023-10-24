@@ -3,6 +3,7 @@ import { Course } from "@/lib/db";
 import { ensureDbConnected } from "@/lib/dbConnect"
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from "next-auth/react";
+import { NextResponse } from "next/server";
 
 export default async (req: NextApiRequest,res: NextApiResponse) => {
 
@@ -17,9 +18,9 @@ export default async (req: NextApiRequest,res: NextApiResponse) => {
     console.log(courseId, "id");
     const course = await Course.find({ _id: courseId});
     if(course){
-      res.status(200).json({sucess: true , course});
+      return NextResponse.json({sucess: true , course});
     }
-    res.status(404).json({success: false, messgae: "Course not found"});
+     return NextResponse.json({sucess: false }, {status:500});
 
   }
 
