@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import type { NextComponentType } from 'next';
+import Shimmer from "../../components/shimmer";
 
 type CustomAppProps = AppProps & {
   Component: NextComponentType & {auth?: boolean}
@@ -41,7 +42,7 @@ function Auth({ children }: {children: React.ReactNode}) {
   const { status } = useSession({ required: true });
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div><Shimmer /></div>;
   }
 
   return children;
