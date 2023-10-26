@@ -11,6 +11,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import Shimmer from "../../../components/shimmer";
 
 const Course = () => {
   const { query } = useRouter();
@@ -96,7 +97,8 @@ function UpdateCard() {
   }, [courseDetails]);
 
   return (
-    <div className="p-5 border shadow-lg rounded-lg">
+    <div>
+      {!courseDetails ? <Shimmer/> :  <div className="p-5 border shadow-lg rounded-lg">
       <h1 className="text-xl font-bold mb-4">Update course details</h1>
       <div className="flex flex-col">
         <input
@@ -176,7 +178,9 @@ function UpdateCard() {
           Delete Course
         </button>
       </div>
+    </div>}
     </div>
+   
   );
 }
 
