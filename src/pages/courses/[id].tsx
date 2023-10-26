@@ -21,7 +21,7 @@ const Course = () => {
   const init = async () => {
 
       const response = await axios.get(
-        `/api/admin/${query.id}/route`
+        `/api/admin/course/${query.id}`
       );
       
       setCourse({ course: response?.data?.course[0] });
