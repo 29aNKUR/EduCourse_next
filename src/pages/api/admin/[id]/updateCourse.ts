@@ -2,7 +2,6 @@ import { Course } from "@/lib/db";
 import { ensureDbConnected } from "@/lib/dbConnect";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
 import { authOptions } from "../../auth/[...nextauth]";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -13,10 +12,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     await ensureDbConnected();
     try {
-      const courseId = req.query.id;
+      const {courseId} = req.query;
       const courseData = req.body;
 
-      if (courseId) {
         // If courseId is provided, update the existing course
         const updatedCourse = await Course.findByIdAndUpdate(
           courseId,
@@ -33,9 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         } else {
           res.status(404).json({ success: false, message: "Course not found" });
         }
-      } else {
-        res.status(404).json({ success: false, message: "courseId not found" });
-      }
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
