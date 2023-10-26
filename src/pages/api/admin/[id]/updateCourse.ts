@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   } else {
     await ensureDbConnected();
-    try {
+
       const {courseId} = req.query;
       const courseData = req.body;
 
@@ -31,9 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         } else {
           res.status(404).json({ success: false, message: "Course not found" });
         }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
+   
   }
 };
