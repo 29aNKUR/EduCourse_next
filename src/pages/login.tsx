@@ -53,14 +53,13 @@ export default function SignIn({
   });
 
   const handleGoogleSignInClick = (e: any) => {
-    // Prevent the default behavior for the "Sign in with Google" button
+
     e.preventDefault();
 
-    // Add your custom Google sign-in logic here
-    // For example, you can use the signIn function from NextAuth.js
-    signIn("google"); // Replace "google" with your Google provider name
 
-    // You may also want to display a loading message or other UI feedback
+    signIn("google"); 
+
+
     toast.loading("Signing in with Google...", { duration: 1000 });
   };
 
@@ -70,7 +69,7 @@ export default function SignIn({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            formik.submitForm(); // Use formik.submitForm() to submit the form
+            formik.submitForm(); 
           }}
           className="form"
         >
@@ -108,15 +107,6 @@ export default function SignIn({
             ) : null}
           </label>
           <div className="flex flex-col items-center">
-            {/* {Object.values(providers).map((provider) => (
-            <button
-              type="submit"
-              key={provider.name}
-              className="bg-indigo-700 hover:bg-indigo-800 dark:text-white font-bold text-xl px-4 py-2 rounded-md mt-4 border shadow-lg"
-            >
-              Sign in with {provider.name}
-            </button>
-          ))} */}
             {Object.values(providers).map((provider) => {
               if (provider.name === "Credentials") {
                 return (
