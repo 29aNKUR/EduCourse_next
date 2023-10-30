@@ -28,7 +28,6 @@ export const authOptions: any = { // Add type annotation
         console.log(creds);
         const username1 = creds.username;
         const password1 = creds.password;
-        // Add logic here to look up the user from the credentials supplied
         const admin = await Admin.findOne({ username: username1 }); // Updated property name
       
         if (!admin) {
