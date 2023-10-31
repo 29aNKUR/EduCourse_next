@@ -1,5 +1,4 @@
 //Working
-// import { NEXT_URL } from "@/config";
 import { courseState } from "@/store/atoms/course";
 import {
   courseDescription,
