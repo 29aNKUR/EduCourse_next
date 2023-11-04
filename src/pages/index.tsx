@@ -1,16 +1,3 @@
-// import Home from './home'
-
-// const index = () => {
-//   return (
-//     <div>
-
-//       <Home/>
-//     </div>
-//   )
-// }
-
-// export default index
-
 import Head from "next/head";
 import Hero from "../../components/hero";
 import SectionTitle from "../../components/sectionTitle";
