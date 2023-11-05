@@ -54,9 +54,9 @@ export function Course({ course }: { course: Course }) {
                       {course.description}
                     </div>
                   </div>
-                  <div className="mt-1">
+                  <div className="mt-1 text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider">
                     ₹ {course.price}
-                    <span className="text-gray-600 uppercase text-xs font-semibold tracking-wider"></span>
+                    <span className="text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider"></span>
                   </div>
                   <div className="mt-4"></div>
                 </div>
