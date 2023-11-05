@@ -46,7 +46,7 @@ export function Course({ course }: { course: Course }) {
 
               <div className="subcard">
                 <div className="bg-white p-6 rounded-lg shadow-lg">
-                  <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate">
+                  <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate text-gray-600">
                     {course.title}
                   </h4>
                   <div className="flex items-baseline">
@@ -56,7 +56,7 @@ export function Course({ course }: { course: Course }) {
                   </div>
                   <div className="mt-1">
                     ₹ {course.price}
-                    <span className="text-gray-600 text-sm"></span>
+                    <span className="text-gray-600 uppercase text-xs font-semibold tracking-wider"></span>
                   </div>
                   <div className="mt-4"></div>
                 </div>
