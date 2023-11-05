@@ -45,7 +45,7 @@ export function Course({ course }: { course: Course }) {
               />
 
               <div className="subcard">
-                <div className="bg-white p-6 rounded-lg shadow-lg">
+                <div className="bg-white px-1 py-2 border md:px-4 md:py-1 rounded-lg shadow-lg flex flex-col justify-center">
                   <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate text-gray-600">
                     {course.title}
                   </h4>
