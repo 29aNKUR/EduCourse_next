@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Shimmer from "../../../components/shimmer";
 
+
 const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
@@ -20,7 +21,7 @@ const Course = () => {
   const init = async () => {
 
       const response = await axios.get(
-        `/api/admin/${query.id}/route`
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/${query.id}/route`
       );
       
       setCourse({ course: response?.data?.course[0] });
