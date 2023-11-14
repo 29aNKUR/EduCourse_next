@@ -37,26 +37,31 @@ export function Course({ course }: { course: Course }) {
         <Link href={`/courses/${course._id}`}>
           <div className="wrapper bg-gray-400 antialiased text-gray-900 p-10">
             <div>
-              <img
-                style={{ height: "250px" }}
-                src={course.imageLink}
-                alt="product image"
-                className="w-full h-64 object-cover object-center rounded-lg shadow-md"
-              />
+              <div style={{ width: "250px", height: "250px" }}>
+                <img
+                  src={course.imageLink}
+                  alt="product image"
+                  className="w-full h-full object-cover object-center rounded-lg shadow-md"
+                />
+              </div>
 
-              <div className="subcard">
+              <div className="subcard" style={{ width: "100%" }}>
                 <div className="bg-white px-1 py-2 border md:px-4 md:py-1 rounded-lg shadow-lg flex flex-col justify-center">
                   <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate text-gray-600">
+                  <div style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {course.title}
+                    </div>
                   </h4>
-                  <div className="flex items-baseline">
-                    <div className=" text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                  <div className="text-gray-600 uppercase text-xs font-semibold tracking-wider overflow-hidden">
+                    <div style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {course.description}
                     </div>
                   </div>
+                  <div className="flex items-baseline flex-wrap">
+                    {/* ... (other content) */}
+                  </div>
                   <div className="mt-1 text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider">
                     ₹ {course.price}
-                    <span className="text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider"></span>
                   </div>
                   <div className="mt-4"></div>
                 </div>
@@ -68,7 +73,6 @@ export function Course({ course }: { course: Course }) {
     </div>
   );
 }
-
 export default Courses;
 
 //added for custom client session handling

@@ -52,10 +52,12 @@
     padding:10px;
   }
 
-  .subcard{
-    position:relative;
-    padding: left 4px;
-     margin-top:-56px; 
+  .subcard {
+    position: relative;
+    padding-left: 4px; /* Corrected property name */
+    margin-top: -56px;
+    width: 100%; /* Make sure the subcard takes the full width */
   }
+  
 
   
