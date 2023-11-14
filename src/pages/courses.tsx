@@ -3,7 +3,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import Shimmer from '../../components/shimmer';
 import defaultImg from '../../public/img/defaultImg.jpg';
-
+import { Course } from "@/store/atoms/course.js";
 function Courses() {
   const [courses, setCourses] = React.useState([]);
 
@@ -27,7 +27,7 @@ function Courses() {
       ) : (
         <div className="flex justify-center flex-wrap mt-10">
           {courses.map((course) => (
-            <Course key={course?._id} course={course} />
+            <Course course={course} />
           ))}
         </div>
       )}
@@ -35,10 +35,10 @@ function Courses() {
   );
 }
 
-export function Course({ course }) {
+export function Course({ course }:{course: Course}) {
   const DEFAULT_IMAGE_URL = defaultImg; // Provide a placeholder or default image URL
 
-  const isValidImageUrl = (url) => url && typeof url === 'string' && url.trim() !== '';
+  const isValidImageUrl = (url: string) => url && typeof url === 'string' && url.trim() !== '';
   const imageUrl = isValidImageUrl(course.imageLink) ? course.imageLink : DEFAULT_IMAGE_URL;
 
   return (
@@ -49,7 +49,7 @@ export function Course({ course }) {
             <div>
               <div style={{ width: '250px', height: '250px' }}>
                 <img
-                  src={imageUrl}
+                  src={course?.imageLink}
                   alt="product image"
                   className="w-full h-full object-cover object-center rounded-lg shadow-md"
                 />
