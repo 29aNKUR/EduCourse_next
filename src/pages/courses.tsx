@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Shimmer from '../../components/shimmer';
 import defaultImg from '../../public/img/defaultImg.jpg';
 import { Course } from "@/store/atoms/course.js";
+
 function Courses() {
-  const [courses, setCourses] = React.useState([]);
+  const [courses, setCourses] = useState([]);
 
   const allcourses = async () => {
     try {
@@ -16,7 +17,7 @@ function Courses() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     allcourses();
   }, []);
 
@@ -66,9 +67,6 @@ export function Course({ course }:{course: Course}) {
                     <div style={{ maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {course.description}
                     </div>
-                  </div>
-                  <div className="flex items-baseline flex-wrap">
-                    {/* ... (other content) */}
                   </div>
                   <div className="mt-1 text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider">
                     ₹ {course.price}
