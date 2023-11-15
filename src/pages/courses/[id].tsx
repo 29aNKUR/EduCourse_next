@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Shimmer from "../../../components/shimmer";
+import { NEXT_URL } from "@/config";
 
 
 const Course = () => {
@@ -21,7 +22,7 @@ const Course = () => {
   const init = async () => {
 
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/${query.id}/route`
+        `/api/admin/${query.id}/route`
       );
       
       setCourse({ course: response?.data?.course[0] });
