@@ -19,9 +19,13 @@ const Course = () => {
   console.log(query, "Router");
   const setCourse = useSetRecoilState(courseState);
 
+  const api = axios.create({
+    baseURL: "https://edu-course-next.vercel.app",  // Replace with your actual API base URL
+  });
+
   const init = async () => {
 
-      const response = await axios.get(
+      const response = await api.get(
         `/api/admin/${query.id}/route`
       );
       
