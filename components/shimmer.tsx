@@ -13,7 +13,11 @@ const Shimmer = () => {
     </div>
   ));
 
-  return <div className="flex flex-wrap">{shimmerCards}</div>;
+  return (
+    <div className="flex items-center justify-center">
+      <div className="flex flex-wrap ml-28">{shimmerCards}</div>
+    </div>
+  );
 };
 
 export default Shimmer;
