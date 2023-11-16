@@ -1,6 +1,7 @@
 //Working
 import { courseState } from "@/store/atoms/course";
 import {
+  courseDescription,
   // courseDescription,
   courseImage,
   coursePrice,
@@ -12,8 +13,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Shimmer from "../../../components/shimmer";
-import { NEXT_URL } from "@/config";
-
 
 const Course = () => {
   const { query } = useRouter();
@@ -197,6 +196,7 @@ function UpdateCard() {
 function CourseCard() {
   const title = useRecoilValue(courseTitle);
   const imageLink = useRecoilValue(courseImage);
+  const desc = useRecoilValue(courseDescription)
 
   return (
     // <div className="dark:bg-slate-400">
@@ -214,11 +214,11 @@ function CourseCard() {
     <div className="md:flex md:justify-center md:h-screen border:none md:border p-5 shadow-lg w-1 md:p-5 md:w-3 lg:my-5 z-20 rounded-lg">
       <div>
         <img className="rounded-lg flex justify-start" src={imageLink} alt="product image" style={{ height: "400px", width: "400px" }}/>
-        <div className="">
-          <h5 className="text-lg font-bold md:tracking-wide">{title}</h5>
+        <div className="mt-2">
+          <h5 className="font-bold md:tracking-wide">{desc}</h5>
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold">
-              <h1 className="text-gray-400"> Price </h1>
+            <span className="font-semibold">
+              <h1 className="text-gray-500"> Price </h1>
               ₹ <Price />
             </span>
           </div>
@@ -234,7 +234,7 @@ function Price() {
     <>
       {/* <h1 style={{ color: "gray" }}>Price</h1> */}
       {/* <h1> */}
-      <b>{price} </b>
+      <b className="">{price} </b>
       {/* </h1> */}
     </>
   );
