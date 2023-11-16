@@ -1,10 +1,11 @@
 //Working
 import { courseState } from "@/store/atoms/course";
 import {
-  courseDescription,
+  // courseDescription,
   courseImage,
   coursePrice,
   courseTitle,
+  // courseDetails
 } from "@/store/selectors/course";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -18,27 +19,24 @@ const Course = () => {
   const { query } = useRouter();
   console.log(query, "Router");
   const setCourse = useSetRecoilState(courseState);
+  // const courseDetail = useRecoilValue(courseDetails);
+    const init = async () => {
 
-  const api = axios.create({
-    baseURL: "https://edu-course-next.vercel.app",  // Replace with your actual API base URL
-  });
-
-  const init = async () => {
-
-      const response = await api.get(
+      const response = await axios.get(
         `/api/admin/${query.id}/route`
       );
       
-      setCourse({ course: response?.data?.course[0] });
+      setCourse({ course: response?.data?.course });
         console.log(response);
-
-  };
-
-
+        // console.log(courseDetail,"new courseDetails")
+  };  
 
   useEffect(() => {
     init();
   }, []);
+
+  // const course = useRecoilValue(courseState);
+  // console.log(course,"course")
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -77,6 +75,7 @@ function GrayTopper() {
 function UpdateCard() {
   const router = useRouter();
   const [courseDetails, setCourse] = useRecoilState(courseState);
+  console.log(courseDetails,"courseDetails")
   const [title, setTitle] = useState(courseDetails?.course?.title || "");
   const [description, setDescription] = useState(
     courseDetails?.course?.description || ""
@@ -91,6 +90,7 @@ function UpdateCard() {
 
   //For re-render the page to get correct course details in update card
   useEffect(() => {
+    if(courseDetails?.course){
     setTitle(courseDetails?.course?.title || "");
     setDescription(courseDetails?.course?.description || "");
     setImage(courseDetails?.course?.imageLink || "");
@@ -99,7 +99,12 @@ function UpdateCard() {
         ? courseDetails?.course?.price
         : parseFloat(courseDetails?.course?.price || '0')
     );
+    }
   }, [courseDetails]);
+
+  if(!courseDetails) {
+    return <Shimmer />
+  }
 
   return (
     <div>

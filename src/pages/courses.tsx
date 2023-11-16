@@ -67,7 +67,7 @@ export function Course({ course }:{course: Course}) {
                     <div style={{ maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {course.description}
                     </div>
-                  </div>
+                  </div>  
                   <div className="mt-1 text-gray-600 dark:text-gray-700 uppercase text-xs font-semibold tracking-wider">
                     ₹ {course.price}
                   </div>
