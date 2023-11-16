@@ -54,7 +54,8 @@
 
   .subcard {
     position: relative;
-    padding-left: 4px; /* Corrected property name */
+    padding-left: 5px; /* Corrected property name */
+    padding-right: 5px;
     margin-top: -56px;
     width: 100%; /* Make sure the subcard takes the full width */
   }

@@ -57,7 +57,7 @@ export function Course({ course }:{course: Course}) {
               </div>
 
               <div className="subcard" style={{ width: '100%' }}>
-                <div className="bg-white px-1 py-2 border md:px-4 md:py-1 rounded-lg shadow-lg flex flex-col justify-center">
+                <div className="bg-white px-1 py-2 border md:px-4 md:py-1 rounded-lg shadow-lg flex flex-col justify-center p-5">
                   <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate text-gray-600">
                     <div style={{ maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {course.title}
