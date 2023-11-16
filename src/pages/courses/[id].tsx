@@ -108,7 +108,7 @@ function UpdateCard() {
 
   return (
     <div>
-      {!courseDetails ? <Shimmer/> :  <div className="p-5 md:border shadow-lg rounded-lg">
+     <div className="p-5 md:border shadow-lg rounded-lg">
       <h1 className="text-xl font-bold mb-4">Update course details</h1>
       <div className="flex flex-col">
         <input
@@ -188,8 +188,8 @@ function UpdateCard() {
           Delete Course
         </button>
       </div>
-    </div>}
     </div>
+  </div>
    
   );
 }

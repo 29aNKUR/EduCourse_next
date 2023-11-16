@@ -27,3 +27,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
+//Add return on every response to end the execution
