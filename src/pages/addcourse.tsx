@@ -11,7 +11,7 @@ const addcourse = () => {
     initialValues: {
       title: "",
       description: "",
-      image: "",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs65SdGF9wuWlderFM2dReDQVipNfLNehardmdVixpJCZkV5kw1FOwUIHbKPjLq-1v3Ps&usqp=CAU",
       price: "",
     },
     validationSchema: Yup.object({
