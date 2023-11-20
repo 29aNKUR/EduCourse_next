@@ -22,7 +22,7 @@ const addcourse = () => {
     }),
     onSubmit: async (data) => {
       try {
-        const response = await axios.put(
+        const response = await axios.post(
           `/api/admin/addCourse`,
           {
             title: data.title,
