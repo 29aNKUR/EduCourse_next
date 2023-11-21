@@ -12,7 +12,7 @@ const addcourse = () => {
       title: "",
       description: "",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs65SdGF9wuWlderFM2dReDQVipNfLNehardmdVixpJCZkV5kw1FOwUIHbKPjLq-1v3Ps&usqp=CAU",
-      price: "",
+      price: 0,
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required."),
