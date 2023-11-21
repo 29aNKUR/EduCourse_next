@@ -12,13 +12,13 @@ const addcourse = () => {
       title: "",
       description: "",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs65SdGF9wuWlderFM2dReDQVipNfLNehardmdVixpJCZkV5kw1FOwUIHbKPjLq-1v3Ps&usqp=CAU",
-      price: 0,
+      price: "",
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required."),
       description: Yup.string().required("Description is required."),
       image: Yup.string().required("Image Link is required."),
-      price: Yup.string().required("Price is required."), // Change to string
+      price: Yup.number().required("Price is required."), // Change to string
     }),
     onSubmit: async (data) => {
       try {
