@@ -46,7 +46,7 @@ export function Course({ course }:{course: Course}) {
   return (
     <div className="hover:animate-bounce">
       <div className="card">
-        <Link href={`/courses/${course._id}`}>
+        <Link href={`/courses/${course?.id}`}>
           <div className="wrapper bg-gray-400 antialiased text-gray-900 p-10">
             <div>
               <div style={{ width: '250px', height: '250px' }}>

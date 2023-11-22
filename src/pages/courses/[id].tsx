@@ -25,7 +25,7 @@ const Course = () => {
         `/api/admin/${query.id}/route`
       );
       
-      setCourse({ course: response?.data?.course });
+      setCourse({ course: response?.data?.courses });
         console.log(response);
         // console.log(courseDetail,"new courseDetails")
   };  
@@ -151,7 +151,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/updateCourse`,
+              `/api/admin/${courseDetails?.course?.id}/updateCourse`,
               {
                 title: title,
                 description: description,
@@ -161,7 +161,7 @@ function UpdateCard() {
               }
             );
             let updatedCourse = {
-              _id: courseDetails?.course?._id || '',
+              id: courseDetails?.course?.id || '',
               title: title,
               description: description,
               imageLink: image,
@@ -178,7 +178,7 @@ function UpdateCard() {
           className="button"
           onClick={async () => {
             axios.put(
-              `/api/admin/${courseDetails?.course?._id}/deleteCourse`
+              `/api/admin/${courseDetails?.course?.id}/deleteCourse`
             );
             alert("course deleted!");
             router.push("/");
@@ -194,7 +194,6 @@ function UpdateCard() {
 }
 
 function CourseCard() {
-  const title = useRecoilValue(courseTitle);
   const imageLink = useRecoilValue(courseImage);
   const desc = useRecoilValue(courseDescription)
 
