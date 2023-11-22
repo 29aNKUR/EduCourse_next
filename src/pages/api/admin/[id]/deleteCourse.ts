@@ -12,8 +12,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     try {
       await prisma.$connect();
-      const courseId = req.query.id;
-      const course = await Course.findByIdAndDelete(courseId);
+      const {id} = req.query;
+      const course = await prisma.course.delete({
+        where : {id: parseInt(id as string)}
+      });
       if (course) {
         res
           .status(200)
