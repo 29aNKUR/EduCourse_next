@@ -1,9 +1,8 @@
 import { Course } from "@/lib/db";
-import { ensureDbConnected } from "@/lib/dbConnect";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
 import { authOptions } from "../../auth/[...nextauth]";
+import { prisma } from "../../../../../server/db/client";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
@@ -11,8 +10,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(401).json({ error: "Unauthorized" });
     return;
   } else {
-    await ensureDbConnected();
     try {
+      await prisma.$connect();
       const courseId = req.query.id;
       const course = await Course.findByIdAndDelete(courseId);
       if (course) {
