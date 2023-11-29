@@ -2,6 +2,7 @@ import { getSession } from 'next-auth/react';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../../server/db/client';
 
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
   console.log(session);
