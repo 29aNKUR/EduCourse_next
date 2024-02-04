@@ -7,6 +7,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import type { NextComponentType } from 'next';
 import Shimmer from "../../components/shimmer";
+import { Toaster } from 'react-hot-toast'
 
 type CustomAppProps = AppProps & {
   Component: NextComponentType & {auth?: boolean}
@@ -20,6 +21,7 @@ export default function App({
 }: CustomAppProps) {
   return (
     <RecoilRoot>
+      <Toaster position="top-center" />
       <ThemeProvider attribute="class">
         <SessionProvider session={session}>
           {/* <Header /> */}

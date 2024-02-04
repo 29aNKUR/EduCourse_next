@@ -13,10 +13,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Shimmer from "../../../components/shimmer";
+import toast from "react-hot-toast";
 
 const Course = () => {
   const { query } = useRouter();
-  console.log(query, "Router");
+  // console.log(query, "Router");
   const setCourse = useSetRecoilState(courseState);
   // const courseDetail = useRecoilValue(courseDetails);
     const init = async () => {
@@ -26,7 +27,7 @@ const Course = () => {
       );
       
       setCourse({ course: response?.data?.courses });
-        console.log(response);
+        // console.log(response);
         // console.log(courseDetail,"new courseDetails")
   };  
 
@@ -168,7 +169,7 @@ function UpdateCard() {
               price: price || 0,
             };
             setCourse({ course: updatedCourse });
-            alert("course updated!");
+            toast.success("Course Updated!");
           }}
         >
           Update Course
@@ -180,7 +181,7 @@ function UpdateCard() {
             axios.put(
               `/api/admin/${courseDetails?.course?.id}/deleteCourse`
             );
-            alert("course deleted!");
+            toast.success("course deleted!");
             router.push("/");
           }}
         >
