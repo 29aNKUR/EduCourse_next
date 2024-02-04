@@ -12,7 +12,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import Shimmer from "../../../components/shimmer";
+import ShimmerCourse from "../../../components/shimmerCourse";
 import toast from "react-hot-toast";
 
 const Course = () => {
@@ -20,23 +20,29 @@ const Course = () => {
   // console.log(query, "Router");
   const setCourse = useSetRecoilState(courseState);
   // const courseDetail = useRecoilValue(courseDetails);
-    const init = async () => {
+  const [loading, setLoading] = useState(true);
 
-      const response = await axios.get(
-        `/api/admin/${query.id}/route`
-      );
-      
-      setCourse({ course: response?.data?.courses });
-        // console.log(response);
-        // console.log(courseDetail,"new courseDetails")
-  };  
+    const init = async () => {
+      try {
+        const response = await axios.get(`/api/admin/${query.id}/route`);
+        setCourse({ course: response?.data?.courses });
+      } catch (error) {
+        console.error("Error fetching course details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };    // console.log(courseDetail,"new courseDetails") 
 
   useEffect(() => {
     init();
-  }, []);
+  }, [query.id]);
 
   // const course = useRecoilValue(courseState);
   // console.log(course,"course")
+
+  if (loading) {
+    return <ShimmerCourse />;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -86,7 +92,6 @@ function UpdateCard() {
       ? courseDetails?.course?.price
       : parseFloat(courseDetails?.course?.price || '0')
   );
-  
 
   //For re-render the page to get correct course details in update card
   useEffect(() => {
@@ -102,7 +107,8 @@ function UpdateCard() {
     }
   }, [courseDetails]);
 
-  if(!courseDetails) {
+  
+  if(courseDetails === null) {
     return <Shimmer />
   }
 
