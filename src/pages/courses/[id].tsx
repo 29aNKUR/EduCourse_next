@@ -107,11 +107,6 @@ function UpdateCard() {
     }
   }, [courseDetails]);
 
-  
-  if(courseDetails === null) {
-    return <Shimmer />
-  }
-
   return (
     <div>
      <div className="p-5 md:border shadow-lg rounded-lg">
